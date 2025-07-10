@@ -12,61 +12,69 @@ export default function AccreditationSection() {
             Our accredited & recognized online school
           </p>
         </div>
-        
+
         <div className="max-w-4xl mx-auto mb-12">
           <p className="text-lg text-[#111111] leading-relaxed mb-6">
-            We strive to earn rank as one of the top private, nonprofit universities in the United States. 
-            Just as you work every day to become the best version of yourself, so do we as a university.
+            We strive to earn rank as one of the top private, nonprofit
+            universities in the United States. Just as you work every day to
+            become the best version of yourself, so do we as a university.
           </p>
           <p className="text-lg text-[#111111] leading-relaxed">
-            We are proud to have attained institutional accreditation in addition to industry recognition 
-            for our accomplishments helping students earn a college education and find career success.
+            We are proud to have attained institutional accreditation in
+            addition to industry recognition for our accomplishments helping
+            students earn a college education and find career success.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* US News Recognition */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
-            <h3 className="text-xl font-bold text-[#003865] mb-2">US News Recognition</h3>
-            <p className="text-[#111111] mb-4">
-              Ranked by U.S. News & World Report among the best online MBA degree programs in 2025.
+          <div className="bg-white rounded-xl p-8 shadow-lg flex flex-col h-full">
+            <h3 className="text-xl font-bold text-[#003865] mb-4">
+              US News Recognition
+            </h3>
+            <p className="text-[#111111] mb-6 flex-grow">
+              Ranked by U.S. News & World Report among the best online MBA
+              degree programs in 2025.
             </p>
-            <div className="mb-4 flex justify-center">
-              <img 
-                src="https://www.herzing.edu/sites/default/files/styles/medium/public/2025-01/BOP07-MBA-Overall-2025_OL_0.png.webp" 
+            <div className="mb-6 flex justify-center">
+              <img
+                src="https://www.herzing.edu/sites/default/files/styles/medium/public/2025-01/BOP07-MBA-Overall-2025_OL_0.png.webp"
                 alt="US News Best MBA Programs Online 2025"
                 className="h-20 w-auto"
               />
             </div>
-            <a 
+            <a
               href="https://www.usnews.com/education/online-education/herzing-university-240392"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
+              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center mt-auto"
             >
               View Full Rankings <ExternalLink className="ml-1 w-4 h-4" />
             </a>
           </div>
 
           {/* Institutional Accreditation */}
-          <div className="bg-white rounded-xl p-8 shadow-lg">
-            <h3 className="text-xl font-bold text-[#003865] mb-2">Institutional Accreditation</h3>
-            <p className="text-[#111111] mb-4">
-              Herzing University is institutionally accredited by the Higher Learning Commission 
-              (hlcommission.org), a regional accreditation agency recognized by the U.S. Department of Education.
+          <div className="bg-white rounded-xl p-8 shadow-lg flex flex-col h-full">
+            <h3 className="text-xl font-bold text-[#003865] mb-4">
+              Institutional Accreditation
+            </h3>
+            <p className="text-[#111111] mb-6 flex-grow">
+              Accredited by the Higher Learning Commission, a regional
+              accreditation agency recognized by the U.S. Department of
+              Education.
             </p>
-            <div className="mb-4 flex justify-center">
-              <img 
-                src="@assets/Screenshot 2025-07-10 at 7.00.50 PM_1752154269065.png" 
+            <div className="mb-6 flex justify-center">
+              <img
+                src="/HigherLearningCommission.png"
                 alt="Higher Learning Commission Accreditation"
                 className="h-20 w-auto"
               />
             </div>
-            <a 
+            <a
               href="https://www.herzing.edu/accreditation-0"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
+              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center mt-auto"
             >
               View All Accreditations <ExternalLink className="ml-1 w-4 h-4" />
             </a>
