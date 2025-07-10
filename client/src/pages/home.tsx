@@ -16,8 +16,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <GraduationCap className="text-[#003865] text-2xl mr-2" />
-              <span className="text-xl font-bold text-[#003865]">Herzing University</span>
+              <img 
+                src="https://www.herzing.edu/themes/hu/assets/img/navbar-logo.png" 
+                alt="Herzing University" 
+                className="h-8 w-auto"
+              />
             </div>
             <div className="hidden md:flex items-center space-x-6">
               <a href="#benefits" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
@@ -29,7 +32,7 @@ export default function Home() {
               <a href="#curriculum" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
                 Curriculum
               </a>
-              <a href="#form" className="bg-[#65DBA5] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
+              <a href="#form" className="bg-[#65DBA5] text-[#012F64] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
                 Apply Now
               </a>
             </div>
@@ -63,7 +66,7 @@ export default function Home() {
             <p className="text-sm font-semibold text-[#003865]">Ready to get started?</p>
             <p className="text-xs text-[#111111]">Get your info packet today</p>
           </div>
-          <a href="#form" className="bg-[#65DBA5] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
+          <a href="#form" className="bg-[#65DBA5] text-[#012F64] font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
             Get Info
           </a>
         </div>
