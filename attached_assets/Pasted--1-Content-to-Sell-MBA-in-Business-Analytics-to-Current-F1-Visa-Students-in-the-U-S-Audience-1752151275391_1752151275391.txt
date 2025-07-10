@@ -1,0 +1,113 @@
+**1. Content to Sell MBA in Business Analytics to Current F1 Visa Students in the U.S.**
+
+**Audience:** International students (on F1 visas) currently studying in the U.S. who are considering transferring to a new MBA program.
+
+**Key Messaging Pillars:**
+
+* STEM-designated program = extended OPT eligibility (up to 3 years)
+* No GMAT/GRE required
+* Flexible online and hybrid formats
+* Transfer up to 9 credits
+* Fast-track completion in 16 months
+* Career-aligned certifications (CAPM, CBAP, PMP, IIBA-CBDA)
+* Rolling admissions with waived enrollment fee
+
+**Landing Page Copy**
+
+**Headline**: Transfer Your F1 Visa and Advance with a STEM MBA in Business Analytics
+
+**Subheadline**: Join Herzing University’s accredited, flexible MBA program with full support for international transfers.
+
+**Why Transfer to Herzing?**
+
+* *STEM Advantage*: Extend your stay in the U.S. with 36-month OPT eligibility
+* *100% Online or Hybrid*: Learn your way with full flexibility
+* *No GMAT/GRE*: Your ambition matters more than test scores
+* *Transfer Credits*: Save time and money with up to 9 credits accepted
+* *Career-Focused Curriculum*: Specialize in AI, Big Data, ML & Visualization
+* *Certifications Included*: Earn industry-recognized credentials with fee reimbursement
+
+**Program Snapshot**
+
+* Duration: 16 months
+* Credits: 36
+* Format: Online / Hybrid (Atlanta campus)
+* Next Start Date: September 3
+
+**Herzing Means Support**
+
+* International Student Advisors
+* Visa Transfer Guidance
+* Rolling Admissions, Start Anytime
+* Personalized Career Coaching
+
+**Ready to Take the Leap?**
+Transfer your F1 visa to Herzing and pursue your MBA in Business Analytics with confidence.
+
+**Call to Action:**
+\[Request Info] \[Apply Now]
+
+---
+
+**2. Theme Colors from PDF**
+From the PDF design and Herzing University's style, approximate theme colors:
+
+* Primary Blue: #003865
+* Accent and CTA: #65DBA5
+* Dark Gray/Black: #111111
+* Light Gray: #F5F5F5
+* Background White: #FFFFFF
+
+---
+
+**3. Replit Prompt in Canvas**
+
+```
+You are building a conversion-optimized landing page for Herzing University’s MBA in Business Analytics program, targeting international students on F1 visas currently studying in the U.S. who are considering transferring schools.
+
+**Requirements:**
+- Build a React web app with TailwindCSS, using a responsive, mobile-first layout.
+- Main focus: Single landing page with clear sections.
+- Theme colors: Primary Blue (#003865), Accent Red (#DA291C), Neutral Gray (#F5F5F5), Text Black (#111111), Background (#FFFFFF)
+- Font: Use clean and professional fonts such as Inter, Open Sans, or Roboto.
+
+**Landing Page Structure:**
+1. **Hero Section**
+   - Headline: "Transfer Your F1 Visa & Earn a STEM MBA in Business Analytics"
+   - Subheadline: "Join Herzing University’s accredited program with full support for international students."
+   - CTA buttons: [Request Info] and [Apply Now]
+
+2. **Why Transfer to Herzing**
+   - Icons or visual blocks for key benefits:
+     - STEM OPT Extension
+     - No GMAT/GRE
+     - 100% Online or Hybrid
+     - Transfer Up to 9 Credits
+     - Career Certifications
+     - Rolling Admissions
+
+3. **Program Highlights**
+   - 16 Months | 36 Credits | Next Start: Sept 3
+   - STEM Designated | Tuition: $625/credit
+
+4. **Student Support**
+   - Visa transfer help
+   - Academic advising
+   - Career coaching
+   - Flexible schedules
+
+5. **Curriculum Overview**
+   - Display a few course names (e.g., Predictive Analytics, Big Data, Machine Learning, Marketing Engineering)
+
+6. **Certification Support**
+   - List supported certifications (CAPM, CBAP, PMP, etc.) with logos
+
+7. **Final CTA**
+   - Restate benefit
+   - Show [Apply Now] and [Talk to an Advisor]
+
+**Extras:**
+- Include favicon and title tag: “MBA in Business Analytics | Herzing University”
+- Ensure accessibility (semantic HTML, contrast ratios)
+- Allow for responsive expansion in future (e.g., testimonials, blog posts)
+```
