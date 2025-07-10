@@ -31,7 +31,7 @@ export default function AccreditationSection() {
             <p className="text-[#111111] mb-4">
               Ranked by U.S. News & World Report among the best online MBA degree programs in 2025.
             </p>
-            <div className="mb-4">
+            <div className="mb-4 flex justify-center">
               <img 
                 src="https://www.herzing.edu/sites/default/files/styles/medium/public/2025-01/BOP07-MBA-Overall-2025_OL_0.png.webp" 
                 alt="US News Best MBA Programs Online 2025"
@@ -55,7 +55,7 @@ export default function AccreditationSection() {
               Herzing University is institutionally accredited by the Higher Learning Commission 
               (hlcommission.org), a regional accreditation agency recognized by the U.S. Department of Education.
             </p>
-            <div className="mb-4">
+            <div className="mb-4 flex justify-center">
               <img 
                 src="@assets/Screenshot 2025-07-10 at 7.00.50 PM_1752154269065.png" 
                 alt="Higher Learning Commission Accreditation"
