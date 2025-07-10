@@ -44,6 +44,7 @@ export default function CertificationsSection() {
             </div>
           ))}
         </div>
+      </div>
     </section>
   );
 }
