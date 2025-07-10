@@ -11,7 +11,10 @@ export default function FinalCTA() {
         </p>
         
         <div className="flex justify-center">
-          <a href="#form" className="bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors inline-block">
+          <a href="#form" className="hidden lg:inline-block bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors">
+            Apply Now - Start September 3rd
+          </a>
+          <a href="#mobile-form" className="lg:hidden bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors inline-block">
             Apply Now - Start September 3rd
           </a>
         </div>

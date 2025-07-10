@@ -46,7 +46,7 @@ export default function CertificationsSection() {
         </div>
         
         <div className="mt-12 text-center">
-          <p className="text-sm text-[#111111] max-w-full mx-auto whitespace-nowrap">
+          <p className="text-sm text-[#111111] max-w-4xl mx-auto leading-relaxed">
             * Complete the requisite coursework and <span className="font-bold">we will reimburse the application fees for up to three industry certifications</span>
           </p>
         </div>
