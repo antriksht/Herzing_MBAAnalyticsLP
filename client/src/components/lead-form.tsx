@@ -146,7 +146,7 @@ export default function LeadForm() {
         
         <Button 
           type="submit" 
-          className="w-full bg-[#65DBA5] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#5bc396] transition-colors"
+          className="w-full bg-[#65DBA5] text-[#012F64] font-bold py-3 px-6 rounded-lg hover:bg-[#5bc396] transition-colors"
           disabled={submitLeadMutation.isPending}
         >
           {submitLeadMutation.isPending ? "Submitting..." : "Submit"}

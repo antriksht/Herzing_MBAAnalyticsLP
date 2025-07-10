@@ -36,7 +36,7 @@ export default function CertificationsSection() {
           {certifications.map((cert, index) => (
             <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#65DBA5] rounded-full flex items-center justify-center mx-auto mb-4">
-                <cert.icon className="text-white text-2xl" />
+                <cert.icon className="text-[#012F64] text-2xl" />
               </div>
               <h3 className="text-lg font-bold text-[#003865] mb-2">{cert.title}</h3>
               <p className="text-[#111111]">{cert.description}</p>

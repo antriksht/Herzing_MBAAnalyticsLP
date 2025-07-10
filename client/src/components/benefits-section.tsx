@@ -48,7 +48,7 @@ export default function BenefitsSection() {
           {benefits.map((benefit, index) => (
             <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center mb-4">
-                <benefit.icon className="text-white text-xl" />
+                <benefit.icon className="text-[#012F64] text-xl" />
               </div>
               <h3 className="text-xl font-bold text-[#003865] mb-2">{benefit.title}</h3>
               <p className="text-[#111111]">{benefit.description}</p>

@@ -37,7 +37,7 @@ export default function StudentSupport() {
             <div key={index} className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <support.icon className="text-white text-xl" />
+                  <support.icon className="text-[#012F64] text-xl" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#003865] mb-2">{support.title}</h3>

@@ -41,10 +41,10 @@ export default function HeroSection() {
 
             {/* Mobile CTA - Show only on mobile */}
             <div className="lg:hidden space-y-4">
-              <a href="#form" className="w-full bg-[#65DBA5] text-[#003865] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors block text-center">
+              <a href="#form" className="w-full bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors block text-center">
                 Request Information
               </a>
-              <a href="#form" className="w-full bg-transparent border-2 border-[#65DBA5] text-[#65DBA5] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#65DBA5] hover:text-[#003865] transition-colors block text-center">
+              <a href="#form" className="w-full bg-transparent border-2 border-[#65DBA5] text-[#65DBA5] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#65DBA5] hover:text-[#012F64] transition-colors block text-center">
                 Apply Now
               </a>
             </div>
