@@ -27,63 +27,49 @@ export default function AccreditationSection() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* US News Recognition */}
           <div className="bg-white rounded-xl p-8 shadow-lg">
-            <div className="flex items-start space-x-4">
-              <div className="w-16 h-16 bg-[#65DBA5] rounded-lg flex items-center justify-center flex-shrink-0">
-                <Award className="text-[#012F64] text-2xl" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-[#003865] mb-2">US News Recognition</h3>
-                <p className="text-[#111111] mb-4">
-                  Ranked by U.S. News & World Report among the best online MBA degree programs in 2025.
-                </p>
-                <div className="mb-4">
-                  <img 
-                    src="https://www.herzing.edu/sites/default/files/styles/medium/public/2025-01/BOP07-MBA-Overall-2025_OL_0.png.webp" 
-                    alt="US News Best MBA Programs Online 2025"
-                    className="h-20 w-auto"
-                  />
-                </div>
-                <a 
-                  href="https://www.usnews.com/education/online-education/herzing-university-240392"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
-                >
-                  View Full Rankings <ExternalLink className="ml-1 w-4 h-4" />
-                </a>
-              </div>
+            <h3 className="text-xl font-bold text-[#003865] mb-2">US News Recognition</h3>
+            <p className="text-[#111111] mb-4">
+              Ranked by U.S. News & World Report among the best online MBA degree programs in 2025.
+            </p>
+            <div className="mb-4">
+              <img 
+                src="https://www.herzing.edu/sites/default/files/styles/medium/public/2025-01/BOP07-MBA-Overall-2025_OL_0.png.webp" 
+                alt="US News Best MBA Programs Online 2025"
+                className="h-20 w-auto"
+              />
             </div>
+            <a 
+              href="https://www.usnews.com/education/online-education/herzing-university-240392"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
+            >
+              View Full Rankings <ExternalLink className="ml-1 w-4 h-4" />
+            </a>
           </div>
 
           {/* Institutional Accreditation */}
           <div className="bg-white rounded-xl p-8 shadow-lg">
-            <div className="flex items-start space-x-4">
-              <div className="w-16 h-16 bg-[#65DBA5] rounded-lg flex items-center justify-center flex-shrink-0">
-                <Award className="text-[#012F64] text-2xl" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-[#003865] mb-2">Institutional Accreditation</h3>
-                <p className="text-[#111111] mb-4">
-                  Herzing University is institutionally accredited by the Higher Learning Commission 
-                  (hlcommission.org), a regional accreditation agency recognized by the U.S. Department of Education.
-                </p>
-                <div className="mb-4">
-                  <img 
-                    src="@assets/Screenshot 2025-07-10 at 7.00.50 PM_1752154269065.png" 
-                    alt="Higher Learning Commission Accreditation"
-                    className="h-20 w-auto"
-                  />
-                </div>
-                <a 
-                  href="https://www.herzing.edu/accreditation-0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
-                >
-                  View All Accreditations <ExternalLink className="ml-1 w-4 h-4" />
-                </a>
-              </div>
+            <h3 className="text-xl font-bold text-[#003865] mb-2">Institutional Accreditation</h3>
+            <p className="text-[#111111] mb-4">
+              Herzing University is institutionally accredited by the Higher Learning Commission 
+              (hlcommission.org), a regional accreditation agency recognized by the U.S. Department of Education.
+            </p>
+            <div className="mb-4">
+              <img 
+                src="@assets/Screenshot 2025-07-10 at 7.00.50 PM_1752154269065.png" 
+                alt="Higher Learning Commission Accreditation"
+                className="h-20 w-auto"
+              />
             </div>
+            <a 
+              href="https://www.herzing.edu/accreditation-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center"
+            >
+              View All Accreditations <ExternalLink className="ml-1 w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
