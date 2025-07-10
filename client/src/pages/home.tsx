@@ -14,6 +14,15 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
+        {/* Top announcement bar */}
+        <div className="bg-[#003865] text-white py-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm font-medium">
+              NEXT START <span className="text-[#FECE00] font-bold underline">September 3rd</span> - Waived Enrollment Fee
+            </p>
+          </div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
