@@ -39,7 +39,7 @@ export default function ProgramHighlights() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((highlight, index) => (
             <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-[#65DBA5] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#FECE00] rounded-full flex items-center justify-center mx-auto mb-4">
                 <highlight.icon className="text-[#012F64] text-2xl" />
               </div>
               <h3 className="text-2xl font-bold text-[#003865] mb-2">

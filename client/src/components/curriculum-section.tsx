@@ -45,7 +45,7 @@ export default function CurriculumSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course, index) => (
             <div key={index} className="bg-gradient-to-br from-[#003865] to-[#001a33] rounded-xl p-6 text-white">
-              <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#FECE00] rounded-lg flex items-center justify-center mb-4">
                 <course.icon className="text-[#012F64] text-xl" />
               </div>
               <h3 className="text-lg font-bold mb-2 text-white">{course.title}</h3>

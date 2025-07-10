@@ -36,7 +36,7 @@ export default function StudentSupport() {
           {supports.map((support, index) => (
             <div key={index} className="bg-white rounded-xl p-8 shadow-lg">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#FECE00] rounded-lg flex items-center justify-center flex-shrink-0">
                   <support.icon className="text-[#012F64] text-xl" />
                 </div>
                 <div>
