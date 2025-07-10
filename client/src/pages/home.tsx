@@ -5,7 +5,8 @@ import StudentSupport from "@/components/student-support";
 import CurriculumSection from "@/components/curriculum-section";
 import CertificationsSection from "@/components/certifications-section";
 import FinalCTA from "@/components/final-cta";
-import { GraduationCap, Phone } from "lucide-react";
+import ScrollToTop from "@/components/scroll-to-top";
+import { GraduationCap } from "lucide-react";
 
 export default function Home() {
   return (
@@ -18,10 +19,19 @@ export default function Home() {
               <GraduationCap className="text-[#003865] text-2xl mr-2" />
               <span className="text-xl font-bold text-[#003865]">Herzing University</span>
             </div>
-            <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-[#111111]">
-                Questions? Call: <span className="font-semibold text-[#003865]">1-800-596-0724</span>
-              </span>
+            <div className="hidden md:flex items-center space-x-6">
+              <a href="#benefits" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
+                Why Transfer
+              </a>
+              <a href="#program" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
+                Program
+              </a>
+              <a href="#curriculum" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
+                Curriculum
+              </a>
+              <a href="#form" className="bg-[#65DBA5] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
+                Apply Now
+              </a>
             </div>
           </div>
         </div>
@@ -29,11 +39,19 @@ export default function Home() {
 
       {/* Main Content */}
       <main>
-        <HeroSection />
-        <BenefitsSection />
-        <ProgramHighlights />
+        <section id="form">
+          <HeroSection />
+        </section>
+        <section id="benefits">
+          <BenefitsSection />
+        </section>
+        <section id="program">
+          <ProgramHighlights />
+        </section>
         <StudentSupport />
-        <CurriculumSection />
+        <section id="curriculum">
+          <CurriculumSection />
+        </section>
         <CertificationsSection />
         <FinalCTA />
       </main>
@@ -45,11 +63,14 @@ export default function Home() {
             <p className="text-sm font-semibold text-[#003865]">Ready to get started?</p>
             <p className="text-xs text-[#111111]">Get your info packet today</p>
           </div>
-          <button className="bg-[#65DBA5] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
+          <a href="#form" className="bg-[#65DBA5] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
             Get Info
-          </button>
+          </a>
         </div>
       </div>
+
+      {/* Scroll to Top Widget */}
+      <ScrollToTop />
     </div>
   );
 }

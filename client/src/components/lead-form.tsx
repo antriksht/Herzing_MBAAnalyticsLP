@@ -50,8 +50,8 @@ export default function LeadForm() {
   return (
     <div className="bg-white rounded-2xl shadow-2xl p-8">
       <div className="mb-6">
-        <h3 className="text-2xl font-bold text-primary-blue mb-2">Get Started Today</h3>
-        <p className="text-gray-600">Complete the form below to receive your information packet</p>
+        <h3 className="text-2xl font-bold text-[#003865] mb-2">Learn More Today!</h3>
+        <p className="text-[#111111] font-medium">Classes start: <span className="text-[#65DBA5] font-bold">September 3rd</span></p>
       </div>
       
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -63,8 +63,8 @@ export default function LeadForm() {
             <Input
               id="firstName"
               {...form.register("firstName")}
-              className="mt-1 focus:ring-accent-green focus:border-accent-green"
-              placeholder="Enter your first name"
+              className="mt-1 focus:ring-[#65DBA5] focus:border-[#65DBA5] border-gray-300"
+              placeholder="First Name"
             />
             {form.formState.errors.firstName && (
               <p className="text-red-600 text-xs mt-1">
@@ -79,8 +79,8 @@ export default function LeadForm() {
             <Input
               id="lastName"
               {...form.register("lastName")}
-              className="mt-1 focus:ring-accent-green focus:border-accent-green"
-              placeholder="Enter your last name"
+              className="mt-1 focus:ring-[#65DBA5] focus:border-[#65DBA5] border-gray-300"
+              placeholder="Last Name"
             />
             {form.formState.errors.lastName && (
               <p className="text-red-600 text-xs mt-1">
@@ -98,8 +98,8 @@ export default function LeadForm() {
             id="email"
             type="email"
             {...form.register("email")}
-            className="mt-1 focus:ring-accent-green focus:border-accent-green"
-            placeholder="Enter your email address"
+            className="mt-1 focus:ring-[#65DBA5] focus:border-[#65DBA5] border-gray-300"
+            placeholder="Email"
           />
           {form.formState.errors.email && (
             <p className="text-red-600 text-xs mt-1">
@@ -108,39 +108,40 @@ export default function LeadForm() {
           )}
         </div>
         
-        <div>
-          <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
-            Phone Number *
-          </Label>
-          <Input
-            id="phone"
-            type="tel"
-            {...form.register("phone")}
-            className="mt-1 focus:ring-accent-green focus:border-accent-green"
-            placeholder="Enter your phone number"
-          />
-          {form.formState.errors.phone && (
-            <p className="text-red-600 text-xs mt-1">
-              {form.formState.errors.phone.message}
-            </p>
-          )}
-        </div>
-        
-        <div>
-          <Label htmlFor="zipCode" className="text-sm font-medium text-gray-700">
-            Current US Zip Code *
-          </Label>
-          <Input
-            id="zipCode"
-            {...form.register("zipCode")}
-            className="mt-1 focus:ring-accent-green focus:border-accent-green"
-            placeholder="Enter your zip code"
-          />
-          {form.formState.errors.zipCode && (
-            <p className="text-red-600 text-xs mt-1">
-              {form.formState.errors.zipCode.message}
-            </p>
-          )}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
+              Phone Number *
+            </Label>
+            <Input
+              id="phone"
+              type="tel"
+              {...form.register("phone")}
+              className="mt-1 focus:ring-[#65DBA5] focus:border-[#65DBA5] border-gray-300"
+              placeholder="Phone"
+            />
+            {form.formState.errors.phone && (
+              <p className="text-red-600 text-xs mt-1">
+                {form.formState.errors.phone.message}
+              </p>
+            )}
+          </div>
+          <div>
+            <Label htmlFor="zipCode" className="text-sm font-medium text-gray-700">
+              Current US Zip Code *
+            </Label>
+            <Input
+              id="zipCode"
+              {...form.register("zipCode")}
+              className="mt-1 focus:ring-[#65DBA5] focus:border-[#65DBA5] border-gray-300"
+              placeholder="ZIP Code"
+            />
+            {form.formState.errors.zipCode && (
+              <p className="text-red-600 text-xs mt-1">
+                {form.formState.errors.zipCode.message}
+              </p>
+            )}
+          </div>
         </div>
         
         <Button 
@@ -148,11 +149,11 @@ export default function LeadForm() {
           className="w-full bg-[#65DBA5] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#5bc396] transition-colors"
           disabled={submitLeadMutation.isPending}
         >
-          {submitLeadMutation.isPending ? "Submitting..." : "Get My Information Packet"}
+          {submitLeadMutation.isPending ? "Submitting..." : "Submit"}
         </Button>
         
-        <p className="text-xs text-gray-500 text-center">
-          By submitting this form, you consent to receive communications from Herzing University.
+        <p className="text-xs text-[#111111] text-center">
+          By submitting this form, I consent to Herzing University contacting me by phone for marketing messages (including mobile and manual/autodialed means) and email using the information I have provided. I understand that my consent is not a condition of enrollment.
         </p>
       </form>
     </div>
