@@ -38,18 +38,18 @@ export default function CurriculumSection() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-primary-blue mb-4">Curriculum Overview</h2>
-          <p className="text-xl text-gray-600">Master cutting-edge business analytics skills with our comprehensive curriculum</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#003865] mb-4">Curriculum Overview</h2>
+          <p className="text-xl text-[#111111]">Master cutting-edge business analytics skills with our comprehensive curriculum</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course, index) => (
-            <div key={index} className="bg-gradient-to-br from-primary-blue to-blue-900 rounded-xl p-6 text-white">
-              <div className="w-12 h-12 bg-accent-green rounded-lg flex items-center justify-center mb-4">
+            <div key={index} className="bg-gradient-to-br from-[#003865] to-[#001a33] rounded-xl p-6 text-white">
+              <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center mb-4">
                 <course.icon className="text-white text-xl" />
               </div>
-              <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-              <p className="text-blue-100">{course.description}</p>
+              <h3 className="text-lg font-bold mb-2 text-white">{course.title}</h3>
+              <p className="text-white/90">{course.description}</p>
             </div>
           ))}
         </div>

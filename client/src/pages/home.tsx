@@ -15,12 +15,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <GraduationCap className="text-primary-blue text-2xl mr-2" />
-              <span className="text-xl font-bold text-primary-blue">Herzing University</span>
+              <GraduationCap className="text-[#003865] text-2xl mr-2" />
+              <span className="text-xl font-bold text-[#003865]">Herzing University</span>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-gray-600">
-                Questions? Call: <span className="font-semibold text-primary-blue">1-800-596-0724</span>
+              <span className="text-sm text-[#111111]">
+                Questions? Call: <span className="font-semibold text-[#003865]">1-800-596-0724</span>
               </span>
             </div>
           </div>
@@ -39,13 +39,13 @@ export default function Home() {
       </main>
 
       {/* Mobile CTA Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-accent-green p-4 shadow-lg z-50">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#65DBA5] p-4 shadow-lg z-50">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-semibold text-primary-blue">Ready to get started?</p>
-            <p className="text-xs text-gray-600">Get your info packet today</p>
+            <p className="text-sm font-semibold text-[#003865]">Ready to get started?</p>
+            <p className="text-xs text-[#111111]">Get your info packet today</p>
           </div>
-          <button className="bg-accent-green text-white font-bold py-2 px-4 rounded-lg hover:bg-green-400 transition-colors">
+          <button className="bg-[#65DBA5] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
             Get Info
           </button>
         </div>
