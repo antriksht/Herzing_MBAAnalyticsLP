@@ -44,12 +44,6 @@ export default function CertificationsSection() {
             </div>
           ))}
         </div>
-        
-        <div className="mt-12 bg-[#DA291C] rounded-2xl p-8 text-white text-center">
-          <h3 className="text-2xl font-bold mb-4">🎯 Certification Guarantee</h3>
-          <p className="text-lg text-white/90">We're so confident in your success that we offer full fee reimbursement for all certification exams included in your program.</p>
-        </div>
-      </div>
     </section>
   );
 }
