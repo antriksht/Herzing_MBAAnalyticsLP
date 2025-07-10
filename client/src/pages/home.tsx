@@ -7,6 +7,7 @@ import CertificationsSection from "@/components/certifications-section";
 import AccreditationSection from "@/components/accreditation-section";
 import FinalCTA from "@/components/final-cta";
 import ScrollToTop from "@/components/scroll-to-top";
+import LeadForm from "@/components/lead-form";
 import { GraduationCap } from "lucide-react";
 
 export default function Home() {
@@ -55,6 +56,14 @@ export default function Home() {
         <section id="form">
           <HeroSection />
         </section>
+        
+        {/* Mobile Form Section - Only visible on mobile */}
+        <section id="mobile-form" className="lg:hidden bg-gray-50 py-12">
+          <div className="max-w-md mx-auto px-4">
+            <LeadForm />
+          </div>
+        </section>
+        
         <section id="benefits">
           <BenefitsSection />
         </section>
@@ -77,7 +86,7 @@ export default function Home() {
             <p className="text-sm font-semibold text-[#003865]">Ready to get started?</p>
             <p className="text-xs text-[#111111]">Get your info packet today</p>
           </div>
-          <a href="#form" className="bg-[#65DBA5] text-[#012F64] font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
+          <a href="#mobile-form" className="bg-[#65DBA5] text-[#012F64] font-bold py-2 px-4 rounded-lg hover:bg-[#5bc396] transition-colors">
             Get Info
           </a>
         </div>
