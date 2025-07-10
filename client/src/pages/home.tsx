@@ -4,6 +4,7 @@ import ProgramHighlights from "@/components/program-highlights";
 import StudentSupport from "@/components/student-support";
 import CurriculumSection from "@/components/curriculum-section";
 import CertificationsSection from "@/components/certifications-section";
+import AccreditationSection from "@/components/accreditation-section";
 import FinalCTA from "@/components/final-cta";
 import ScrollToTop from "@/components/scroll-to-top";
 import { GraduationCap } from "lucide-react";
@@ -56,6 +57,7 @@ export default function Home() {
           <CurriculumSection />
         </section>
         <CertificationsSection />
+        <AccreditationSection />
         <FinalCTA />
       </main>
 

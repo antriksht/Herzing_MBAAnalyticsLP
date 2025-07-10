@@ -12,7 +12,7 @@ export default function HeroSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
-                Transfer Your F1 Visa & Earn a <span className="text-[#65DBA5]">STEM MBA</span> in Business Analytics
+                Transfer Your F1 Visa & Earn a <span className="text-[#FECE00]">STEM MBA</span> in Business Analytics
               </h1>
               <p className="text-xl lg:text-2xl text-white/90 font-medium">
                 Join Herzing University's accredited program with full support for international students
