@@ -40,9 +40,15 @@ export default function CertificationsSection() {
               </div>
               <h3 className="text-lg font-bold text-[#003865] mb-2">{cert.title}</h3>
               <p className="text-[#111111]">{cert.description}</p>
-              <div className="mt-4 text-sm text-[#65DBA5] font-semibold">Fee Reimbursement Included</div>
+
             </div>
           ))}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <p className="text-sm text-[#111111] max-w-3xl mx-auto">
+            * Complete the requisite coursework and we will reimburse the application fees for up to three industry certifications
+          </p>
         </div>
       </div>
     </section>
