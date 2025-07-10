@@ -46,7 +46,7 @@ export default function CurriculumSection() {
           {courses.map((course, index) => (
             <div key={index} className="bg-gradient-to-br from-[#003865] to-[#001a33] rounded-xl p-6 text-white">
               <div className="w-12 h-12 bg-[#65DBA5] rounded-lg flex items-center justify-center mb-4">
-                <course.icon className="text-white text-xl" />
+                <course.icon className="text-[#012F64] text-xl" />
               </div>
               <h3 className="text-lg font-bold mb-2 text-white">{course.title}</h3>
               <p className="text-white/90">{course.description}</p>
