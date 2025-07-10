@@ -42,7 +42,7 @@ export default function ProgramHighlights() {
               <div className="w-16 h-16 bg-[#65DBA5] rounded-full flex items-center justify-center mx-auto mb-4">
                 <highlight.icon className="text-[#012F64] text-2xl" />
               </div>
-              <h3 className="text-2xl font-bold text-[#FECE00] mb-2">
+              <h3 className="text-2xl font-bold text-[#003865] mb-2">
                 {highlight.title}
               </h3>
               <p className="text-[#111111]">{highlight.description}</p>

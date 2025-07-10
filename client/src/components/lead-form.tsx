@@ -51,7 +51,7 @@ export default function LeadForm() {
     <div className="bg-white rounded-2xl shadow-2xl p-8">
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-[#003865] mb-2">Learn More Today!</h3>
-        <p className="text-[#111111] font-medium">Classes start: <span className="text-[#FECE00] font-bold">September 3rd</span></p>
+        <p className="text-[#111111] font-medium">Classes start: <span className="text-[#65DBA5] font-bold">September 3rd</span></p>
       </div>
       
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

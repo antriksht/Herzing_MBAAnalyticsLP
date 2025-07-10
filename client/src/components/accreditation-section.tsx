@@ -2,7 +2,7 @@ import { Award, ExternalLink } from "lucide-react";
 
 export default function AccreditationSection() {
   return (
-    <section className="py-16 bg-[#F5F5F5]">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#003865] mb-4">
@@ -28,7 +28,7 @@ export default function AccreditationSection() {
           {/* US News Recognition */}
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="flex items-start space-x-4">
-              <div className="w-16 h-16 bg-[#FECE00] rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-[#65DBA5] rounded-lg flex items-center justify-center flex-shrink-0">
                 <Award className="text-[#012F64] text-2xl" />
               </div>
               <div>
