@@ -47,7 +47,7 @@ export default function AccreditationSection() {
               href="https://www.usnews.com/education/online-education/herzing-university-240392"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center mt-auto"
+              className="text-[#003865] hover:text-[#002447] font-medium inline-flex items-center mt-auto"
             >
               View Full Rankings <ExternalLink className="ml-1 w-4 h-4" />
             </a>
@@ -74,7 +74,7 @@ export default function AccreditationSection() {
               href="https://www.herzing.edu/accreditation-0"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#65DBA5] hover:text-[#5bc396] font-medium inline-flex items-center mt-auto"
+              className="text-[#003865] hover:text-[#002447] font-medium inline-flex items-center mt-auto"
             >
               View All Accreditations <ExternalLink className="ml-1 w-4 h-4" />
             </a>
