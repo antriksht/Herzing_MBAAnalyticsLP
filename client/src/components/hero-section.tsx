@@ -3,9 +3,12 @@ import LeadForm from "./lead-form";
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-[#003865] to-[#001a33] text-white py-16 lg:py-24 relative overflow-hidden">
+    <section 
+      className="bg-cover bg-center text-white py-16 lg:py-24 relative overflow-hidden"
+      style={{ backgroundImage: "url('/Hero_Extended.webp')" }}
+    >
       {/* Background overlay for better readability */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#003865] to-[#001a33] opacity-85"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
