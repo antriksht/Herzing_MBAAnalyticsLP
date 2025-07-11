@@ -9,6 +9,7 @@ import FinalCTA from "@/components/final-cta";
 import ScrollToTop from "@/components/scroll-to-top";
 import LeadForm from "@/components/lead-form";
 import { GraduationCap } from "lucide-react";
+import FAQSection from "@/components/faq-section";
 
 export default function Home() {
   return (
@@ -76,6 +77,7 @@ export default function Home() {
         </section>
         <CertificationsSection />
         <AccreditationSection />
+        <FAQSection />
         <FinalCTA />
       </main>
 
