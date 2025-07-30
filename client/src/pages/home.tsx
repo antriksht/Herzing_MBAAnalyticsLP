@@ -54,7 +54,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main>
+      <main className="lg:pb-20">
         <section id="form">
           <HeroSection />
         </section>
@@ -96,8 +96,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Scroll to Top Widget */}
-      <ScrollToTop />
+      {/* Scroll to Top Widget & Desktop Sticky CTA */}
+      <div className="hidden lg:flex fixed bottom-0 left-0 right-0 bg-white border-t-2 border-[#65DBA5] p-4 shadow-lg z-50 items-center justify-center">
+        <div className="flex items-center space-x-4">
+          <p className="text-lg font-semibold text-[#003865]">Ready to advance your career?</p>
+          <a href="#form" className="bg-[#65DBA5] text-[#012F64] font-bold py-2 px-6 rounded-lg hover:bg-[#5bc396] transition-colors text-lg">
+            Request Information
+          </a>
+        </div>
+        <ScrollToTop />
+      </div>
     </div>
   );
 }
