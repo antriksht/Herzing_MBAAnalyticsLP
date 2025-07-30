@@ -11,8 +11,11 @@ import LeadForm from "@/components/lead-form";
 import NewLeadForm from "@/components/new-lead-form";
 import { GraduationCap } from "lucide-react";
 import FAQSection from "@/components/faq-section";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Home() {
+  const isMobile = useIsMobile();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -48,7 +51,7 @@ export default function Home() {
               <a href="#faq" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
                 FAQ
               </a>
-              <a href="#form" className="bg-[#65DBA5] text-[#012F64] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
+              <a href={isMobile ? "#mobile-form" : "#form"} className="bg-[#65DBA5] text-[#012F64] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
                 Apply Now
               </a>
             </div>
