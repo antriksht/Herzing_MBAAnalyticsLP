@@ -5,22 +5,22 @@ export default function StudentSupport() {
     {
       icon: Users,
       title: "International Student Advisors",
-      description: "Dedicated advisors who understand the unique challenges of international students and provide personalized guidance throughout your journey."
+      description: "Dedicated experts who understand your needs and guide you from application to graduation."
     },
     {
       icon: FileText,
       title: "Visa Transfer Guidance",
-      description: "Expert assistance with F1 visa transfers, SEVIS records, and immigration compliance to ensure a smooth transition."
+      description: "Support with SEVIS record transfers, compliance, and smooth transition to Herzing."
     },
     {
       icon: Briefcase,
-      title: "Personalized Career Coaching",
-      description: "One-on-one career coaching, resume building, interview preparation, and job search strategies tailored to your goals."
+      title: "Career Coaching",
+      description: "One‑on‑one coaching, resume help, interview prep, and job search strategies."
     },
     {
       icon: CalendarCheck,
       title: "Flexible Scheduling",
-      description: "Rolling admissions mean you can start when you're ready. No need to wait for traditional semester start dates."
+      description: "Rolling admissions so you can start when you’re ready - no semester‑start delays."
     }
   ];
 

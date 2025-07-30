@@ -4,33 +4,33 @@ export default function CurriculumSection() {
   const courses = [
     {
       icon: TrendingUp,
-      title: "Predictive Analytics",
-      description: "Learn to forecast trends and make data-driven decisions using advanced statistical methods"
+      title: "Leadership & Management",
+      description: "Build decision‑making, strategic planning, and leadership expertise"
     },
     {
       icon: Database,
-      title: "Big Data Management",
-      description: "Master the tools and techniques for handling large-scale data sets and cloud platforms"
+      title: "Business & Data Analytics",
+      description: "Master predictive analytics, big data tools, and AI‑driven decision‑making"
     },
     {
       icon: Bot,
-      title: "Machine Learning",
-      description: "Implement AI solutions and automated decision-making systems for business applications"
+      title: "Technology & Cybersecurity",
+      description: "Learn networking, cloud computing, ethical hacking, and IT project management"
     },
     {
       icon: BarChart3,
-      title: "Data Visualization",
-      description: "Create compelling visual stories from complex data using industry-leading tools"
+      title: "Healthcare Management",
+      description: "Explore healthcare administration, policy, and information management"
     },
     {
       icon: Megaphone,
-      title: "Marketing Engineering",
-      description: "Apply analytics to marketing strategies and customer behavior analysis"
+      title: "Project Management",
+      description: "Develop advanced project planning, cost, and risk management skills"
     },
     {
       icon: Settings,
-      title: "Business Intelligence",
-      description: "Transform raw data into actionable business insights and strategic recommendations"
+      title: "Capstone/Internship",
+      description: "Apply your learning in real‑world projects or industry internships"
     }
   ];
 

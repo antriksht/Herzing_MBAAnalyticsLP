@@ -8,45 +8,45 @@ import {
 export default function FAQSection() {
   const faqs = [
     {
-      question: "How long does the evaluation process take?",
+      question: "Can I transfer my F‑1 visa to Herzing University?",
       answer:
-        "The evaluation process typically takes 5-7 business days once we receive all required documents. Our admissions team will review your transcripts, English proficiency scores, and application materials to determine your eligibility and potential transfer credits.",
+        "Yes. If your current I‑20 is in good standing and you meet admission requirements, we can issue you a new I‑20 and guide you through the SEVIS transfer process so your studies continue without interruption.",
     },
     {
-      question: "Can I keep my F1 visa status during the transfer?",
+      question: "Will my F‑1 visa status remain valid during the transfer?",
       answer:
-        "Yes, you can maintain your F1 visa status during the transfer process. We provide comprehensive guidance on SEVIS transfer procedures to ensure your immigration status remains valid throughout the transition to Herzing University.",
+        "Yes. Once your SEVIS record is transferred to Herzing, your F‑1 status remains active. Our international student advisors will walk you through the timing and paperwork to ensure a smooth transition.",
     },
     {
-      question: "What scholarships and financial aid are available?",
+      question: "Do I need to take the GMAT, GRE, SAT, or ACT?",
       answer:
-        "International students may be eligible for various scholarships including academic merit scholarships, need-based grants, and program-specific awards. We also offer flexible payment plans and currently have a waived enrollment fee promotion for the September 3rd start date.",
+        "No. We do not require these exams for admission. If you have previously taken them, you may submit scores, but they are not necessary for acceptance.",
     },
     {
-      question: "Do I need to take the GMAT or GRE?",
+      question: "How many credits can I transfer?",
       answer:
-        "No, the GMAT and GRE are not required for admission to our MBA in Business Analytics program. We evaluate candidates based on their academic background, professional experience, and potential for success in the program.",
+        "Graduate students may transfer up to 9 credits from approved coursework, which can save time and tuition. Undergraduate transfer credit is determined after a formal evaluation of your previous academic transcripts.",
     },
     {
-      question: "How many credits can I transfer from my previous education?",
+      question: "Can I study online or in a hybrid format?",
       answer:
-        "You can transfer up to 9 credits from your previous graduate coursework, potentially reducing your time to degree completion. Our admissions team will evaluate your transcripts to determine which credits are eligible for transfer.",
+        "Yes. Many programs offer 100% online learning or a hybrid option at our Atlanta campus, giving you flexibility while maintaining your visa compliance requirements.",
     },
     {
-      question: "Is the program fully online or do I need to attend campus?",
+      question: "Can I work while studying?",
       answer:
-        "Our MBA in Business Analytics is available in both 100% online and hybrid formats. You can choose the learning format that best fits your schedule and preferences while maintaining your F1 visa status.",
+        "International students have limited work options while on an F‑1 visa. You may work during your final semester through Curricular Practical Training (CPT), and after graduation you may apply for Optional Practical Training (OPT), which can last up to 36 months for STEM‑designated programs.",
     },
     {
       question:
-        "What support services are available for international students?",
+        "What support services will I receive?",
       answer:
-        "We provide dedicated international student advisors, visa transfer assistance, career coaching, flexible scheduling options, and comprehensive academic support to ensure your success throughout the program.",
+        "You’ll have access to dedicated international student advisors, one‑on‑one career coaching, visa transfer guidance, resume and interview preparation, and flexible scheduling to help you succeed from day one.",
     },
     {
-      question: "When is the next program start date?",
+      question: "When can I start my program?",
       answer:
-        "The next program start date is September 3rd, 2025. We're currently offering a waived enrollment fee for students who enroll for this start date. Additional start dates are available throughout the year.",
+        "Our next intake begins September 3, but with rolling admissions, you can apply anytime and secure your place in an upcoming start date. We’ll work with you to align your SEVIS transfer and program start for a seamless transition.",
     },
   ];
 
@@ -58,8 +58,7 @@ export default function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-[#111111]">
-            Get answers to common questions about our MBA program and F1 visa
-            transfer process
+            Answers to common questions about F‑1 transfers and studying at Herzing University
           </p>
         </div>
 

@@ -8,6 +8,7 @@ import AccreditationSection from "@/components/accreditation-section";
 import FinalCTA from "@/components/final-cta";
 import ScrollToTop from "@/components/scroll-to-top";
 import LeadForm from "@/components/lead-form";
+import NewLeadForm from "@/components/new-lead-form";
 import { GraduationCap } from "lucide-react";
 import FAQSection from "@/components/faq-section";
 
@@ -62,6 +63,7 @@ export default function Home() {
         <section id="mobile-form" className="lg:hidden bg-gray-50 py-12">
           <div className="max-w-md mx-auto px-4">
             <LeadForm />
+            {/* <NewLeadForm /> */}
           </div>
         </section>
         

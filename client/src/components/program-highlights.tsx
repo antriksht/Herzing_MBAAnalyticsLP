@@ -5,22 +5,22 @@ export default function ProgramHighlights() {
     {
       icon: Clock,
       title: "16 Months",
-      description: "Fast-track completion timeline",
+      description: "Graduate faster with an accelerated timeline (varies by program)",
     },
     {
       icon: GraduationCap,
       title: "36 Credits",
-      description: "Comprehensive curriculum",
+      description: "Comprehensive, career‑focused curriculum",
     },
     {
       icon: Calendar,
-      title: "Sept 3",
+      title: "September 3rd",
       description: "Next start date",
     },
     {
       icon: DollarSign,
       title: "$625",
-      description: "Per credit hour",
+      description: "Per credit hour tuition",
     },
   ];
 
@@ -32,7 +32,7 @@ export default function ProgramHighlights() {
             Program Highlights
           </h2>
           <p className="text-xl text-[#111111]">
-            Fast-track your career with our comprehensive MBA program
+            Fast‑track your degree with Herzing University’s flexible programs for F‑1 transfer students
           </p>
         </div>
 
@@ -53,8 +53,7 @@ export default function ProgramHighlights() {
         <div className="mt-12 bg-gradient-to-r from-[#003865] to-[#001a33] rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">STEM Designated Program</h3>
           <p className="text-lg text-white/90">
-            Qualify for extended Optional Practical Training (OPT) and enhance
-            your career prospects in the U.S.
+            Eligible programs qualify for up to 36‑month OPT extension to maximize your U.S. career opportunities.
           </p>
         </div>
       </div>

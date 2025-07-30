@@ -58,7 +58,7 @@ export default function LeadForm() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">
-              First Name *
+              First Name
             </Label>
             <Input
               id="firstName"
@@ -74,7 +74,7 @@ export default function LeadForm() {
           </div>
           <div>
             <Label htmlFor="lastName" className="text-sm font-medium text-gray-700">
-              Last Name *
+              Last Name
             </Label>
             <Input
               id="lastName"
@@ -92,7 +92,7 @@ export default function LeadForm() {
         
         <div>
           <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-            Email Address *
+            Email Address
           </Label>
           <Input
             id="email"
@@ -111,7 +111,7 @@ export default function LeadForm() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
-              Phone Number *
+              Phone Number
             </Label>
             <Input
               id="phone"
@@ -128,7 +128,7 @@ export default function LeadForm() {
           </div>
           <div>
             <Label htmlFor="zipCode" className="text-sm font-medium text-gray-700">
-              Current US Zip Code *
+              Current US Zip Code
             </Label>
             <Input
               id="zipCode"

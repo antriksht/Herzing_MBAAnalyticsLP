@@ -29,7 +29,7 @@ export default function CertificationsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#003865] mb-4">Industry Certifications Included</h2>
-          <p className="text-xl text-[#111111]">Boost your career with industry-recognized credentials</p>
+          <p className="text-xl text-[#111111]">Stand out with credentials valued by employers worldwide and get your exam fees reimbursed for up to three certifications</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

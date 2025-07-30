@@ -14,18 +14,18 @@ export default function BenefitsSection() {
     },
     {
       icon: Laptop,
-      title: "100% Online or Hybrid",
-      description: "Learn your way with full flexibility. Study online or join our Atlanta campus for hybrid learning"
+      title: "Flexible Learning",
+      description: "Study 100% online or choose a hybrid option at our Atlanta campus"
     },
     {
       icon: ArrowRightLeft,
       title: "Transfer Credits",
-      description: "Save time and money with up to 9 credits accepted from your previous studies"
+      description: "Bring up to 9 credits from prior studies to save time and money"
     },
     {
       icon: Award,
       title: "Career Certifications",
-      description: "Earn industry-recognized credentials with fee reimbursement included in your program"
+      description: "Earn recognized industry credentials with included fee reimbursement"
     },
     {
       icon: CalendarCheck,
