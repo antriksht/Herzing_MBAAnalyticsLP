@@ -45,6 +45,9 @@ export default function Home() {
               <a href="#curriculum" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
                 Curriculum
               </a>
+              <a href="#faq" className="text-sm text-[#111111] hover:text-[#003865] transition-colors">
+                FAQ
+              </a>
               <a href="#form" className="bg-[#65DBA5] text-[#012F64] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#5bc396] transition-colors">
                 Apply Now
               </a>
@@ -55,7 +58,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="lg:pb-20">
-        <section id="form">
+        <section id="form" className="scroll-m-24">
           <HeroSection />
         </section>
         
@@ -67,19 +70,19 @@ export default function Home() {
           </div>
         </section>
         
-        <section id="benefits">
+        <section id="benefits" className="scroll-m-24">
           <BenefitsSection />
         </section>
-        <section id="program">
+        <section id="program" className="scroll-m-24">
           <ProgramHighlights />
         </section>
         <StudentSupport />
-        <section id="curriculum">
+        <section id="curriculum" className="scroll-m-28">
           <CurriculumSection />
         </section>
         <CertificationsSection />
         <AccreditationSection />
-        <FAQSection />
+        <FAQSection id="faq" />
         <FinalCTA />
       </main>
 

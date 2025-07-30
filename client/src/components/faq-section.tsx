@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export default function FAQSection() {
+export default function FAQSection({ id }: { id?: string }) {
   const faqs = [
     {
       question: "Can I transfer my F‑1 visa to Herzing University?",
@@ -51,7 +51,7 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="py-16 bg-[#F5F5F5]">
+    <section id={id} className="py-16 bg-[#F5F5F5] scroll-m-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#003865] mb-4">
