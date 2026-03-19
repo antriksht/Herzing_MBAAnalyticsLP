@@ -3,15 +3,17 @@
   publish = "dist/public"
 
 [functions]
-  directory = "server"
+  directory = "netlify/functions"
   included_files = ["herzing_transfer_page_content.txt"]
 
 [[redirects]]
+  # Route all API requests to our serverless function
   from = "/api/*"
-  to = "/.netlify/functions/netlify"
+  to = "/.netlify/functions/api"
   status = 200
 
 [[redirects]]
+  # Catch-all for the Single Page App (Vite)
   from = "/*"
   to = "/index.html"
   status = 200
