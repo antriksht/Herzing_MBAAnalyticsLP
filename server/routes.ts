@@ -18,12 +18,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     systemInstruction: "You are a specialized Herzing University F-1 Transfer Expert. Your goal is to help international students understand the transfer process, required documents, credit transfers, and program details. Use the provided context to answer accurately. Be supportive, professional, and highlight the 'Move Up to Herzing' branding. Emphasize the $5,000 scholarship and 16-month MBA timeline when relevant. If you don't know an answer, refer the student to admissions@herzing.edu."
   });
   // Read context for AI
-  const contentPath = path.resolve(process.cwd(), "herzing_transfer_page_content.txt");
+  const searchPaths = [
+    path.resolve(process.cwd(), "herzing_transfer_page_content.txt"),
+    path.resolve(__dirname, "herzing_transfer_page_content.txt"),
+    path.resolve(__dirname, "..", "herzing_transfer_page_content.txt")
+  ];
+  
   let herzingContext = "";
-  try {
-    herzingContext = await fs.readFile(contentPath, "utf-8");
-  } catch (err) {
-    console.error("Context file not found:", contentPath);
+  for (const contentPath of searchPaths) {
+    try {
+      herzingContext = await fs.readFile(contentPath, "utf-8");
+      console.log(`Successfully loaded context from: ${contentPath}`);
+      break; 
+    } catch (err) {
+      // Continue to next path
+    }
+  }
+  
+  if (!herzingContext) {
+    console.error("Context file not found in any of the expected locations:", searchPaths);
   }
 
   // Lead capture endpoint
