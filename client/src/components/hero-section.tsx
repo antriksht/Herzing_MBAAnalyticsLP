@@ -1,6 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import LeadForm from "./lead-form";
 import NewLeadForm from "./new-lead-form";
+import { trackEvent } from "@/lib/analytics";
 
 export default function HeroSection() {
   return (
@@ -45,7 +46,11 @@ export default function HeroSection() {
 
             {/* Mobile CTA - Show only on mobile */}
             <div className="lg:hidden space-y-4">
-              <a href="#mobile-form" className="w-full bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors block text-center">
+              <a 
+                href="#mobile-form" 
+                onClick={() => trackEvent("CTA Hero Click", { label: "Request Information - Mobile" })}
+                className="w-full bg-[#65DBA5] text-[#012F64] font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#5bc396] transition-colors block text-center"
+              >
                 Request Information
               </a>
             </div>

@@ -56,7 +56,7 @@ export default function BenefitsSection() {
             </div>
           ))}
         </div>
-        <SectionCTA />
+        <SectionCTA sectionName="Benefits" />
       </div>
     </section>
   );

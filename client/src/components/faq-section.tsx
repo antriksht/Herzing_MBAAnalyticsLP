@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionCTA } from "./section-cta";
+import { trackEvent } from "@/lib/analytics";
 
 export default function FAQSection({ id }: { id?: string }) {
   const faqs = [
@@ -47,7 +48,7 @@ export default function FAQSection({ id }: { id?: string }) {
     {
       question: "When can I start my program?",
       answer:
-        "Our next intake begins September 3, but with rolling admissions, you can apply anytime and secure your place in an upcoming start date. We’ll work with you to align your SEVIS transfer and program start for a seamless transition.",
+        "Our next intake begins May 4th, but with rolling admissions, you can apply anytime and secure your place in an upcoming start date. We’ll work with you to align your SEVIS transfer and program start for a seamless transition.",
     },
   ];
 
@@ -71,7 +72,10 @@ export default function FAQSection({ id }: { id?: string }) {
                 value={`item-${index}`}
                 className="border-b border-gray-200 last:border-b-0"
               >
-                <AccordionTrigger className="text-left py-6 px-4 hover:bg-gray-50 text-[#003865] font-semibold text-lg rounded-lg">
+                <AccordionTrigger 
+                  className="text-left py-6 px-4 hover:bg-gray-50 text-[#003865] font-semibold text-lg rounded-lg"
+                  onClick={() => trackEvent("FAQ Click", { question: faq.question })}
+                >
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-6 text-[#111111] leading-relaxed">
@@ -81,7 +85,7 @@ export default function FAQSection({ id }: { id?: string }) {
             ))}
           </Accordion>
         </div>
-        <SectionCTA />
+        <SectionCTA sectionName="FAQ" />
       </div>
     </section>
   );

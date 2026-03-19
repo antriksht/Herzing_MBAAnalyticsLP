@@ -15,6 +15,7 @@ import FAQSection from "@/components/faq-section";
 import { useIsMobile } from "@/hooks/use-mobile";
 import AITransferAssistant from "@/components/ai-transfer-assistant";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Home() {
   const isMobile = useIsMobile();
@@ -38,6 +39,7 @@ export default function Home() {
   }, [lastScrollY]);
 
   const scrollToForm = () => {
+    trackEvent("CTA Middle Click", { label: "Step Up to Success" });
     const element = document.getElementById("form");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -53,31 +55,50 @@ export default function Home() {
         "bg-white shadow-sm sticky top-0 z-50 transition-transform duration-300 w-full",
         headerVisible ? "translate-y-0" : "-translate-y-full"
       )}>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 md:h-16">
             <div className="flex items-center">
-              <img 
-                src="https://www.herzing.edu/themes/hu/assets/img/navbar-logo.png" 
-                alt="Herzing University" 
+              <img
+                src="https://www.herzing.edu/themes/hu/assets/img/navbar-logo.png"
+                alt="Herzing University"
                 className="h-8 md:h-10 w-auto"
               />
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#benefits" className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105">
+              <a
+                href="#benefits"
+                onClick={() => trackEvent("Nav Click", { section: "Why Transfer" })}
+                className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105"
+              >
                 Why Transfer
               </a>
-              <a href="#program" className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105">
+              <a
+                href="#program"
+                onClick={() => trackEvent("Nav Click", { section: "Programs" })}
+                className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105"
+              >
                 Programs
               </a>
-              <a href="#curriculum" className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105">
+              <a
+                href="#curriculum"
+                onClick={() => trackEvent("Nav Click", { section: "Curriculum" })}
+                className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105"
+              >
                 Curriculum
               </a>
-              <a href="#faq" className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105">
+              <a
+                href="#faq"
+                onClick={() => trackEvent("Nav Click", { section: "FAQ" })}
+                className="text-sm font-semibold text-[#111111] hover:text-[#003865] transition-all hover:scale-105"
+              >
                 FAQ
               </a>
-              <button 
-                onClick={() => setIsAssistantOpen(true)}
+              <button
+                onClick={() => {
+                  trackEvent("CTA Header Click", { label: "Talk to Advisor" });
+                  setIsAssistantOpen(true);
+                }}
                 className="bg-[#003865] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#002d50] transition-all shadow-md hover:shadow-lg transform active:scale-95"
               >
                 Talk to Advisor
@@ -92,7 +113,7 @@ export default function Home() {
         <section id="form" className="scroll-m-24">
           <HeroSection />
         </section>
-        
+
         {/* Mobile Form Section - Only visible on mobile */}
         <section id="mobile-form" className="lg:hidden bg-gray-50 py-16 px-4">
           <div className="max-w-md mx-auto relative">
@@ -100,11 +121,11 @@ export default function Home() {
             <LeadForm />
           </div>
         </section>
-        
+
         <section id="benefits" className="scroll-m-24">
           <BenefitsSection />
         </section>
-        
+
         <div className="bg-[#003865] py-16 lg:py-24 text-center px-4 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
             <div className="grid grid-cols-6 gap-4">
@@ -118,39 +139,42 @@ export default function Home() {
             <p className="text-lg lg:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
               Don't let your potential settle. Transfer your F-1 visa to Herzing University and experience student-first education designed for your success.
             </p>
-            <Button 
+            <Button
               onClick={scrollToForm}
               className="bg-[#FECE00] text-[#003865] hover:bg-[#e6bb00] text-xl font-black py-8 px-12 rounded-full shadow-2xl transform transition-all hover:scale-105 active:scale-95 mb-4 group"
             >
               Step Up to Success
               <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <p className="text-white/50 text-sm mt-4 font-medium italic">Classes start Sept 3rd • Limited Seats Available</p>
+            <p className="text-white/50 text-sm mt-4 font-medium italic">Classes start May 4th • Limited Seats Available</p>
           </div>
         </div>
 
         <section id="program" className="scroll-m-24">
           <ProgramHighlights />
         </section>
-        
+
         <StudentSupport />
-        
+
         <section id="curriculum" className="scroll-m-28">
           <CurriculumSection />
         </section>
-        
+
         <CertificationsSection />
         <AccreditationSection />
-        
+
         <FAQSection id="faq" />
-        
+
         <FinalCTA />
       </main>
 
       {/* Mobile CTA Bar - Floating / Sticky Assistant Trigger */}
-      <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-sm z-50">
-        <button 
-          onClick={() => setIsAssistantOpen(true)}
+      <div className="lg:hidden fixed bottom-[15px] left-1/2 -translate-x-1/2 w-[92%] max-w-sm z-50">
+        <button
+          onClick={() => {
+            trackEvent("CTA Sticky Click", { label: "Live Transfer Advisor - Mobile" });
+            setIsAssistantOpen(true);
+          }}
           className="w-full bg-[#003865] text-white flex items-center justify-between p-4 rounded-2xl shadow-[0_10px_30px_rgba(0,56,101,0.35)] border border-white/20 backdrop-blur-sm"
         >
           <div className="flex items-center space-x-3">
@@ -181,8 +205,11 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <button 
-              onClick={() => setIsAssistantOpen(true)}
+            <button
+              onClick={() => {
+                trackEvent("CTA Sticky Click", { label: "Chat With F-1 Expert - Desktop" });
+                setIsAssistantOpen(true);
+              }}
               className="bg-[#003865] text-white font-black py-4 px-10 rounded-xl hover:bg-[#002845] transition-all shadow-xl hover:-translate-y-1 active:translate-y-0"
             >
               Chat With F-1 Expert

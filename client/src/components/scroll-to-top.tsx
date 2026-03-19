@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,6 +19,7 @@ export default function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
+    trackEvent("CTA Interaction", { label: "Scroll to Top" });
     window.scrollTo({
       top: 0,
       behavior: "smooth",

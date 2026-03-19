@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { trackEvent } from "@/lib/analytics";
 
 export default function LeadForm() {
   const { toast } = useToast();
@@ -61,8 +62,18 @@ export default function LeadForm() {
       localStorage.setItem("herzing_lead_firstName", variables.firstName);
       localStorage.setItem("herzing_lead_university", variables.currentUniversity || "");
       localStorage.setItem("herzing_lead_program", variables.programOfInterest || "");
+      
+      trackEvent("Hero Form Submit", {
+        program: variables.programOfInterest,
+        campus: variables.campus,
+        university: variables.currentUniversity
+      });
     },
     onError: (error: any) => {
+      trackEvent("Failed Form Submit", {
+        formLocation: "Hero",
+        error: error.message
+      });
       toast({
         title: "Submission Failed",
         description: error.message || "Please try again later.",
@@ -74,7 +85,15 @@ export default function LeadForm() {
   const nextStep = async () => {
     const fields = ["campus", "programArea", "programOfInterest", "firstName", "lastName", "email", "phone"];
     const isValid = await form.trigger(fields as any);
-    if (isValid) setStep(2);
+    if (isValid) {
+      trackEvent("CTA Hero Click", { label: "Continue to Step 2" });
+      setStep(2);
+    } else {
+      trackEvent("Failed Form Submit", { 
+        formLocation: "Hero Step 1", 
+        errors: Object.keys(form.formState.errors) 
+      });
+    }
   };
 
   const handleReset = () => {
@@ -99,7 +118,7 @@ export default function LeadForm() {
         </div>
         <h3 className="text-2xl font-black text-[#002F65]">You're on your way!</h3>
         <p className="text-gray-500 font-medium">Your information has been received. An F-1 Transfer Specialist will reach out within 24 hours.</p>
-        <p className="text-sm font-bold text-[#002F65]">Classes start: <span className="underline">September 3rd</span></p>
+        <p className="text-sm font-bold text-[#002F65]">Classes start: <span className="underline">May 4th</span></p>
         
         <div className="pt-4 border-t border-gray-100">
           <p className="text-[10px] text-gray-400 mb-2">Did you submit incorrect information? No worries.</p>
@@ -119,7 +138,7 @@ export default function LeadForm() {
     <div className="bg-white rounded-2xl shadow-2xl p-6">
       <div className="mb-4">
         <h3 className="text-xl font-black text-[#002F65] leading-none mb-1">Learn More Today!</h3>
-        <p className="text-gray-500 font-medium text-xs leading-none">Classes start: <span className="text-[#002F65] font-bold underline decoration-[#66DCA5] decoration-2 underline-offset-2">September 3rd</span></p>
+        <p className="text-gray-500 font-medium text-xs leading-none">Classes start: <span className="text-[#002F65] font-bold underline decoration-[#66DCA5] decoration-2 underline-offset-2">May 4th</span></p>
       </div>
 
       {/* Step indicator */}
@@ -129,7 +148,15 @@ export default function LeadForm() {
         <div className={cn("w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all", step === 2 ? "bg-[#002F65] text-white" : "bg-gray-100 text-gray-400")}>2</div>
       </div>
 
-      <form onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))} className="space-y-3">
+      <form 
+        onFocus={(e) => {
+          const target = e.target as any;
+          const label = target.name || target.placeholder || "form element";
+          trackEvent("Form Field Focus", { field: label, form: "Hero" });
+        }}
+        onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))} 
+        className="space-y-3"
+      >
         {step === 1 ? (
           <div className="space-y-3">
             <div className="grid grid-cols-2 gap-3">

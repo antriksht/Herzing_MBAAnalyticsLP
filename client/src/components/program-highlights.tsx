@@ -15,7 +15,7 @@ export default function ProgramHighlights() {
     },
     {
       icon: Calendar,
-      title: "September 3rd",
+      title: "May 4th",
       description: "Next start date",
     },
     {
@@ -57,7 +57,7 @@ export default function ProgramHighlights() {
             Eligible programs qualify for up to 36‑month OPT extension to maximize your U.S. career opportunities.
           </p>
         </div>
-        <SectionCTA />
+        <SectionCTA sectionName="Program Highlights" />
       </div>
     </section>
   );

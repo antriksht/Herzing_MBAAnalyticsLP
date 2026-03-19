@@ -13,6 +13,7 @@ import { X, Send, User, Bot, GraduationCap, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { trackEvent } from "@/lib/analytics";
 
 interface Message {
   role: "user" | "assistant";
@@ -47,7 +48,7 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
       return [
         { role: "assistant", content: `Hello! I see you've already shared your transfer interest with us. Welcome back, ${name}!` },
         { role: "user", content: `I'm ${name} from ${university}, interested in ${program}.` },
-        { role: "assistant", content: `Glad to have you here! I'm ready to help you plan your transfer to Herzing. What would you like to know about ${program}, our admission process, or the September 3rd start date?` }
+        { role: "assistant", content: `Glad to have you here! I'm ready to help you plan your transfer to Herzing. What would you like to know about ${program}, our admission process, or the May 4th start date?` }
       ];
     }
 
@@ -91,7 +92,13 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
     const fields = ["campus", "programArea", "programOfInterest", "firstName", "lastName", "email", "phone"];
     const isValid = await form.trigger(fields as any);
     if (isValid) {
+      trackEvent("CTA AI Click", { label: "Continue to Step 2" });
       setFormStep(2);
+    } else {
+      trackEvent("Failed Form Submit", { 
+        formLocation: "AI Assistant Step 1", 
+        errors: Object.keys(form.formState.errors) 
+      });
     }
   };
 
@@ -117,10 +124,20 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
       setMessages(prev => [
         ...prev, 
         { role: "user", content: `My name is ${firstName} and I'm currently at ${university}.` },
-        { role: "assistant", content: `Welcome, ${firstName}! I've recorded your interest in transferring from ${university}. I'm now ready to help you plan your "Move Up" to Herzing. What would you like to know about our ${variables.programOfInterest} program, credit transfers, or the September 3rd start date?` }
+        { role: "assistant", content: `Welcome, ${firstName}! I've recorded your interest in transferring from ${university}. I'm now ready to help you plan your "Move Up" to Herzing. What would you like to know about our ${variables.programOfInterest} program, credit transfers, or the May 4th start date?` }
       ]);
+
+      trackEvent("AI Form Submit", {
+        program: variables.programOfInterest,
+        university: variables.currentUniversity,
+        visaStatus: variables.visaStatus
+      });
     },
     onError: (error: any) => {
+      trackEvent("Failed Form Submit", {
+        formLocation: "AI Assistant",
+        error: error.message
+      });
       toast({ title: "Error", description: error.message, variant: "destructive" });
     },
   });
@@ -132,6 +149,7 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
     },
     onSuccess: (data) => {
       setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
+      trackEvent("AI Response", { questionNumber: questionCount + 1 });
       setQuestionCount(prev => {
         const next = prev + 1;
         localStorage.setItem("herzing_ai_questions", next.toString());
@@ -145,6 +163,7 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
     if (!input.trim() || chatMutation.isPending || questionCount >= 10) return;
 
     setMessages(prev => [...prev, { role: "user", content: input }]);
+    trackEvent("AI Question Asked", { questionNumber: questionCount + 1, length: input.length });
     chatMutation.mutate(input);
     setInput("");
   };
@@ -268,7 +287,15 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
                       </p>
                     </div>
 
-                    <form onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))} className="relative z-10 space-y-4">
+                    <form 
+                      onFocus={(e) => {
+                        const target = e.target as any;
+                        const label = target.name || target.placeholder || "form element";
+                        trackEvent("Form Field Focus", { field: label, form: "AI Assistant" });
+                      }}
+                      onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))} 
+                      className="relative z-10 space-y-4"
+                    >
                       {formStep === 1 ? (
                         <div className="space-y-4 animate-in slide-in-from-right duration-500">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
