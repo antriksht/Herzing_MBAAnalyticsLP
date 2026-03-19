@@ -1,4 +1,5 @@
 import { Users, FileText, Briefcase, CalendarCheck } from "lucide-react";
+import { SectionCTA } from "./section-cta";
 
 export default function StudentSupport() {
   const supports = [
@@ -15,7 +16,7 @@ export default function StudentSupport() {
     {
       icon: Briefcase,
       title: "Career Coaching",
-      description: "One‑on‑one coaching, resume help, interview prep, and job search strategies."
+      description: "One‑on-one coaching, resume help, interview prep, and job search strategies."
     },
     {
       icon: CalendarCheck,
@@ -47,6 +48,7 @@ export default function StudentSupport() {
             </div>
           ))}
         </div>
+        <SectionCTA />
       </div>
     </section>
   );

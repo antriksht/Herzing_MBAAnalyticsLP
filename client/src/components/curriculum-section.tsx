@@ -1,4 +1,5 @@
 import { TrendingUp, Database, Bot, BarChart3, Megaphone, Settings } from "lucide-react";
+import { SectionCTA } from "./section-cta";
 
 export default function CurriculumSection() {
   const courses = [
@@ -53,6 +54,7 @@ export default function CurriculumSection() {
             </div>
           ))}
         </div>
+        <SectionCTA />
       </div>
     </section>
   );

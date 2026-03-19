@@ -111,3 +111,23 @@
     --tw-ring-color: var(--accent-green);
   }
 }
+/* PhoneInput fixes */
+.PhoneInput {
+  @apply text-[#002F65];
+}
+
+.PhoneInputInput {
+  @apply flex-1 outline-none bg-transparent h-full w-full text-base md:text-sm text-[#002F65] font-medium;
+}
+
+.PhoneInputCountry {
+  @apply flex items-center mr-2;
+}
+
+.PhoneInputCountrySelect {
+  @apply cursor-pointer outline-none opacity-0 absolute w-full h-full;
+}
+
+.PhoneInputCountryIcon {
+  @apply w-6 h-auto rounded-sm;
+}

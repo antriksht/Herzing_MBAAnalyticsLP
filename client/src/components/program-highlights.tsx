@@ -1,4 +1,5 @@
 import { Clock, GraduationCap, Calendar, DollarSign } from "lucide-react";
+import { SectionCTA } from "./section-cta";
 
 export default function ProgramHighlights() {
   const highlights = [
@@ -56,6 +57,7 @@ export default function ProgramHighlights() {
             Eligible programs qualify for up to 36‑month OPT extension to maximize your U.S. career opportunities.
           </p>
         </div>
+        <SectionCTA />
       </div>
     </section>
   );

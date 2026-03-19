@@ -5,7 +5,7 @@ import NewLeadForm from "./new-lead-form";
 export default function HeroSection() {
   return (
     <section 
-      className="bg-cover bg-center text-white py-16 lg:py-24 relative overflow-hidden"
+      className="bg-cover bg-center text-white py-10 lg:py-12 relative overflow-hidden"
       style={{ backgroundImage: "url('/Hero_Extended.webp')" }}
     >
       {/* Background overlay for better readability */}
@@ -13,13 +13,13 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
-                Transfer Your F‑1 Visa & Continue Your Education at  <span className="text-[#65DBA5]">Herzing University</span>
+              <h1 className="text-3xl lg:text-5xl font-extrabold leading-tight text-white mb-4">
+                Ready to <span className="text-[#65DBA5]">Move Up</span> to Herzing University?
               </h1>
-              <p className="text-xl lg:text-2xl text-white/90 font-medium">
-                Join Herzing University’s undergraduate or graduate programs, including STEM‑designated degrees, on campus or online.
+              <p className="text-lg lg:text-xl text-white/90 font-medium leading-relaxed">
+                Active F-1 students: Transfer your visa and join our premier MBA & STEM programs. Experience a supportive community designed for your success.
               </p>
             </div>
             

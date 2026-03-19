@@ -1,4 +1,5 @@
 import { Tag, X, Laptop, ArrowRightLeft, Award, CalendarCheck } from "lucide-react";
+import { SectionCTA } from "./section-cta";
 
 export default function BenefitsSection() {
   const benefits = [
@@ -55,6 +56,7 @@ export default function BenefitsSection() {
             </div>
           ))}
         </div>
+        <SectionCTA />
       </div>
     </section>
   );
