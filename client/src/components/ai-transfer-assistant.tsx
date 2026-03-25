@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import { X, Send, User, Bot, GraduationCap, ChevronRight } from "lucide-react";
+import { X, Send, User, Bot, GraduationCap, ChevronRight, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -20,12 +20,12 @@ interface Message {
   content: string;
 }
 
-export default function AITransferAssistant({ 
-  isOpen, 
+export default function AITransferAssistant({
+  isOpen,
   onClose,
   layout = "fullscreen"
-}: { 
-  isOpen: boolean; 
+}: {
+  isOpen: boolean;
   onClose: () => void;
   layout?: "fullscreen" | "widget" | "fullpage";
 }) {
@@ -35,7 +35,7 @@ export default function AITransferAssistant({
   const [formStep, setFormStep] = useState(1);
   const [messages, setMessages] = useState<Message[]>(() => {
     if (typeof window === 'undefined') return [];
-    
+
     // 1. Check for saved conversation history
     const savedMsg = localStorage.getItem("herzing_ai_messages");
     if (savedMsg) {
@@ -65,7 +65,7 @@ export default function AITransferAssistant({
       { role: "assistant", content: "Hello! I'm your Herzing F-1 Transfer Assistant. I can help you understand the process, credits, and timing for your transfer. To get started with a personalized session, please fill out your basic transfer profile below." }
     ];
   });
-  
+
   // Persist messages whenever they change
   useEffect(() => {
     localStorage.setItem("herzing_ai_messages", JSON.stringify(messages));
@@ -103,9 +103,9 @@ export default function AITransferAssistant({
       trackEvent("CTA AI Click", { label: "Continue to Step 2" });
       setFormStep(2);
     } else {
-      trackEvent("Failed Form Submit", { 
-        formLocation: "AI Assistant Step 1", 
-        errors: Object.keys(form.formState.errors) 
+      trackEvent("Failed Form Submit", {
+        formLocation: "AI Assistant Step 1",
+        errors: Object.keys(form.formState.errors)
       });
     }
   };
@@ -119,18 +119,18 @@ export default function AITransferAssistant({
       setHasFilledForm(true);
       const firstName = variables.firstName;
       const university = variables.currentUniversity || "your current university";
-      
+
       // Persist to localStorage
       localStorage.setItem("herzing_lead_submitted", "true");
       localStorage.setItem("herzing_lead_firstName", firstName);
       localStorage.setItem("herzing_lead_university", variables.currentUniversity || "");
       localStorage.setItem("herzing_lead_program", variables.programOfInterest || "");
-      
+
       // Notify other components (like LeadForm) to update their state immediately
       window.dispatchEvent(new Event("storage"));
-      
+
       setMessages(prev => [
-        ...prev, 
+        ...prev,
         { role: "user", content: `My name is ${firstName} and I'm currently at ${university}.` },
         { role: "assistant", content: `Welcome, ${firstName}! I've recorded your interest in transferring from ${university}. I'm now ready to help you plan your "Move Up" to Herzing. What would you like to know about our ${variables.programOfInterest} program, credit transfers, or the May 4th start date?` }
       ]);
@@ -179,7 +179,7 @@ export default function AITransferAssistant({
   useEffect(() => {
     const checkSubmission = () => {
       const hasSubmitted = localStorage.getItem("herzing_lead_submitted") === "true";
-      
+
       if (!hasSubmitted) {
         setHasFilledForm(false);
         // Important: When form is cleared, also clear persistent message history
@@ -193,7 +193,7 @@ export default function AITransferAssistant({
     };
 
     checkSubmission();
-    
+
     // Listen for storage events (sent from LeadForm handleReset)
     window.addEventListener("storage", checkSubmission);
     return () => window.removeEventListener("storage", checkSubmission);
@@ -224,7 +224,7 @@ export default function AITransferAssistant({
           !hasFilledForm ? "h-[520px]" : "h-[75vh] max-h-[750px]"
         )
       )}>
-        
+
         {/* Premium Header */}
         <div className={cn(
           "flex items-center justify-between border-b bg-gray-50/50 backdrop-blur-sm shrink-0",
@@ -247,9 +247,25 @@ export default function AITransferAssistant({
               </div>
             </div>
           </div>
+          {layout === "fullpage" && hasFilledForm && (
+            <button
+              onClick={() => {
+                setHasFilledForm(false);
+                localStorage.removeItem("herzing_lead_submitted");
+                setMessages([]);
+                localStorage.removeItem("herzing_chat_messages");
+                setQuestionCount(0);
+                localStorage.removeItem("herzing_chat_count");
+              }}
+              className="flex items-center space-x-2 px-4 py-2 bg-[#002F65]/5 hover:bg-[#002F65]/10 text-[#002F65] rounded-xl transition-all font-black text-xs uppercase tracking-widest group border border-[#002F65]/10 shadow-sm"
+            >
+              <RotateCcw className="w-4 h-4 group-hover:-rotate-90 transition-transform duration-500" />
+              <span>Reset</span>
+            </button>
+          )}
           {layout !== "fullpage" && (
-            <button 
-              onClick={onClose} 
+            <button
+              onClick={onClose}
               className="p-2 hover:bg-red-50 text-gray-400 hover:text-red-500 rounded-2xl transition-all hover:rotate-90 duration-300"
             >
               <X className="w-6 h-6" />
@@ -275,7 +291,7 @@ export default function AITransferAssistant({
                   <p className="text-[#6F767D] font-medium leading-relaxed">
                     To provide you with personalized transfer advice, please complete the brief interest form on the page first.
                   </p>
-                  <Button 
+                  <Button
                     onClick={() => {
                       onClose();
                       const element = document.getElementById("form");
@@ -294,234 +310,234 @@ export default function AITransferAssistant({
                   </p>
                 </div>
               ) : (
-              <div className="max-w-7xl mx-auto h-full flex flex-col justify-center">
-                <div className={cn(
-                  "grid items-start",
-                  (layout === "fullscreen" || layout === "fullpage") ? "grid-cols-1 lg:grid-cols-2 gap-16" : "grid-cols-1 gap-6"
-                )}>
-                  {/* Left Side: Global Narrative */}
-                  <div className="space-y-6 md:space-y-10 py-4">
-                    <div className="space-y-6">
-                      <div className="inline-flex items-center px-4 py-2 bg-[#66DCA5]/10 text-[#002F65] rounded-full text-xs font-black uppercase tracking-widest border border-[#66DCA5]/20">
-                        <span className="w-2 h-2 bg-[#66DCA5] rounded-full mr-2 animate-pulse"></span>
-                        Instant Admission Planning
+                <div className="max-w-7xl mx-auto h-full flex flex-col justify-center">
+                  <div className={cn(
+                    "grid items-start",
+                    (layout === "fullscreen" || layout === "fullpage") ? "grid-cols-1 lg:grid-cols-2 gap-16" : "grid-cols-1 gap-6"
+                  )}>
+                    {/* Left Side: Global Narrative */}
+                    <div className="space-y-6 md:space-y-10 py-4">
+                      <div className="space-y-6">
+                        <div className="inline-flex items-center px-4 py-2 bg-[#66DCA5]/10 text-[#002F65] rounded-full text-xs font-black uppercase tracking-widest border border-[#66DCA5]/20">
+                          <span className="w-2 h-2 bg-[#66DCA5] rounded-full mr-2 animate-pulse"></span>
+                          Instant Admission Planning
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-black text-[#002F65] leading-[1.1]">
+                          Plan Your <br />
+                          <span className="text-[#66DCA5] italic">F-1 Transfer Instantly.</span>
+                        </h2>
+                        <div className="space-y-4 max-w-md">
+                          <p className="text-[#6F767D] text-base md:text-lg font-medium leading-relaxed">
+                            This AI system is designed to accelerate your move to Herzing. We analyze your credits, track your timeline, and build your May 4th start plan in one sitting.
+                          </p>
+                          <ul className="space-y-3">
+                            {[
+                              "Analyze prior credits & degree options",
+                              "Draft your I-20 transfer timeline",
+                              "Plan your May 4th enrollment steps"
+                            ].map((item, idx) => (
+                              <li key={idx} className="flex items-center text-[#002F65] font-bold text-sm">
+                                <div className="w-5 h-5 bg-[#66DCA5] rounded-full flex items-center justify-center mr-3 shadow-sm scale-75">
+                                  <ChevronRight className="w-3 h-3 text-white" />
+                                </div>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      <h2 className="text-3xl md:text-5xl font-black text-[#002F65] leading-[1.1]">
-                        Plan Your <br />
-                        <span className="text-[#66DCA5] italic">F-1 Transfer Instantly.</span>
-                      </h2>
-                      <div className="space-y-4 max-w-md">
-                        <p className="text-[#6F767D] text-base md:text-lg font-medium leading-relaxed">
-                          This AI system is designed to accelerate your move to Herzing. We analyze your credits, track your timeline, and build your May 4th start plan in one sitting.
+
+                      <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm relative group overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#002F65]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+                        <p className="text-[#002F65] text-lg font-bold leading-relaxed relative z-10">
+                          Tell me about your current program, and I’ll generate a custom Herzing Transfer Path specifically for you.
                         </p>
-                        <ul className="space-y-3">
-                          {[
-                            "Analyze prior credits & degree options",
-                            "Draft your I-20 transfer timeline",
-                            "Plan your May 4th enrollment steps"
-                          ].map((item, idx) => (
-                            <li key={idx} className="flex items-center text-[#002F65] font-bold text-sm">
-                              <div className="w-5 h-5 bg-[#66DCA5] rounded-full flex items-center justify-center mr-3 shadow-sm scale-75">
-                                <ChevronRight className="w-3 h-3 text-white" />
-                              </div>
-                              {item}
-                            </li>
+                      </div>
+
+                      <div className="flex items-center space-x-4 pt-4">
+                        <div className="flex -space-x-3">
+                          {[1, 2, 3].map(i => (
+                            <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
+                              <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="Student" />
+                            </div>
                           ))}
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm relative group overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#002F65]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                      <p className="text-[#002F65] text-lg font-bold leading-relaxed relative z-10">
-                        Tell me about your current program, and I’ll generate a custom Herzing Transfer Path specifically for you.
-                      </p>
-                    </div>
-
-                    <div className="flex items-center space-x-4 pt-4">
-                      <div className="flex -space-x-3">
-                        {[1, 2, 3].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
-                            <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 10}`} alt="Student" />
-                          </div>
-                        ))}
-                      </div>
-                      <p className="text-sm font-bold text-[#002F65]/60 uppercase tracking-tighter">Joined by 400+ F-1 Students</p>
-                    </div>
-                  </div>
-
-                  {/* Right Side: Two-Part Swiping Form */}
-                  <div className="bg-white p-6 md:p-8 rounded-[2rem] border-2 border-[#002F65]/10 shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#66DCA5]/5 rounded-full -mr-16 -mt-16"></div>
-                    
-                    <div className="flex items-center justify-between mb-8 relative z-10">
-                      <div className="flex items-center space-x-2">
-                        <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all", formStep === 1 ? "bg-[#002F65] text-white" : "bg-[#66DCA5] text-white")}>1</div>
-                        <div className={cn("w-12 h-1 rounded-full transition-all", formStep === 2 ? "bg-[#66DCA5]" : "bg-gray-100")}></div>
-                        <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all", formStep === 2 ? "bg-[#002F65] text-white" : "bg-gray-100 text-gray-400")}>2</div>
-                      </div>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">
-                        {formStep === 1 ? "Step 1: Interest" : "Step 2: Transfer Details"}
-                      </p>
-                    </div>
-
-                    <form 
-                      onFocus={(e) => {
-                        const target = e.target as any;
-                        const label = target.name || target.placeholder || "form element";
-                        trackEvent("Form Field Focus", { field: label, form: "AI Assistant" });
-                      }}
-                      onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))} 
-                      className="relative z-10 space-y-4"
-                    >
-                      {formStep === 1 ? (
-                        <div className="space-y-4 animate-in slide-in-from-right duration-500">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Campus *</Label>
-                              <select {...form.register("campus")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
-                                <option value="">Select Campus</option>
-                                <option value="Atlanta">Atlanta, GA</option>
-                                <option value="Online">Online</option>
-                              </select>
-                              {form.formState.errors.campus && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.campus.message}</p>}
-                            </div>
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Program Area *</Label>
-                              <select {...form.register("programArea")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
-                                <option value="">Select Area</option>
-                                <option value="Business">Business</option>
-                                <option value="Technology">Technology</option>
-                                <option value="All">All Areas</option>
-                              </select>
-                              {form.formState.errors.programArea && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.programArea.message}</p>}
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Program of Interest *</Label>
-                            <select {...form.register("programOfInterest")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
-                              <option value="">Select Program</option>
-                              <option value="BS-BM">BS in Business Management</option>
-                              <option value="MBA">MBA</option>
-                              <option value="MBA-BA">MBA in Business Analytics (STEM)</option>
-                              <option value="BS-CS">BS in Cybersecurity</option>
-                              <option value="BS-IT">BS in Information Technology</option>
-                            </select>
-                            {form.formState.errors.programOfInterest && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.programOfInterest.message}</p>}
-                          </div>
-
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">First Name *</Label>
-                              <Input {...form.register("firstName")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="First Name" />
-                              {form.formState.errors.firstName && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.firstName.message}</p>}
-                            </div>
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Last Name *</Label>
-                              <Input {...form.register("lastName")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Last Name" />
-                              {form.formState.errors.lastName && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.lastName.message}</p>}
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Email *</Label>
-                            <Input {...form.register("email")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="email@address.com" />
-                            {form.formState.errors.email && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.email.message}</p>}
-                          </div>
-
-                          <div className="space-y-2">
-                            <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Phone *</Label>
-                            <Controller
-                              name="phone"
-                              control={form.control}
-                              render={({ field }) => (
-                                <PhoneInput
-                                  {...field}
-                                  defaultCountry="US"
-                                  className="flex h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-[#002F65]"
-                                />
-                              )}
-                            />
-                            {form.formState.errors.phone && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.phone.message}</p>}
-                          </div>
-
-                          <Button 
-                            type="button"
-                            onClick={nextStep}
-                            className="w-full bg-[#002F65] text-white hover:bg-[#001732] h-12 rounded-2xl text-lg font-black shadow-lg flex items-center justify-center space-x-2 transition-transform active:scale-95 mt-2"
-                          >
-                            <span>Share Your Dreams</span>
-                            <ChevronRight className="w-5 h-5" />
-                          </Button>
                         </div>
-                      ) : (
-                        <div className="space-y-4 animate-in slide-in-from-right duration-500">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Visa Status *</Label>
-                              <select {...form.register("visaStatus")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 appearance-none">
-                                <option value="F-1">F-1 Student</option>
-                                <option value="J-1">J-1 Exchange</option>
-                                <option value="H-1B">H-1B Worker</option>
-                              </select>
-                            </div>
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Zip Code *</Label>
-                              <Input {...form.register("zipCode")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="30328" />
-                              {form.formState.errors.zipCode && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.zipCode.message}</p>}
-                            </div>
-                          </div>
+                        <p className="text-sm font-bold text-[#002F65]/60 uppercase tracking-tighter">Joined by 400+ F-1 Students</p>
+                      </div>
+                    </div>
 
-                          <div className="space-y-2">
-                            <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Current University *</Label>
-                            <Input {...form.register("currentUniversity")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Where do you study now?" />
-                            {form.formState.errors.currentUniversity && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.currentUniversity.message}</p>}
-                          </div>
+                    {/* Right Side: Two-Part Swiping Form */}
+                    <div className="bg-white p-6 md:p-8 rounded-[2rem] border-2 border-[#002F65]/10 shadow-2xl relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#66DCA5]/5 rounded-full -mr-16 -mt-16"></div>
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Current Program *</Label>
-                              <Input {...form.register("currentProgram")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="e.g. BSCS" />
-                            </div>
-                            <div className="space-y-2">
-                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Credits Earned *</Label>
-                              <Input type="number" {...form.register("creditsEarned")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Estimated" />
-                              {form.formState.errors.creditsEarned && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.creditsEarned.message}</p>}
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                             <Button 
-                               type="button" 
-                               onClick={() => setFormStep(1)}
-                               className="h-12 px-6 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 font-bold hover:bg-gray-50 hover:border-gray-400 order-2 sm:order-1"
-                             >
-                               ← Back
-                             </Button>
-                             <Button 
-                               type="submit" 
-                               className="flex-1 bg-[#002F65] text-white hover:bg-[#001732] h-12 rounded-2xl text-lg font-black shadow-lg whitespace-normal leading-tight px-4 order-1 sm:order-2"
-                               disabled={submitLeadMutation.isPending}
-                             >
-                               {submitLeadMutation.isPending ? "Configuring AI..." : "Step Up to Herzing →"}
-                             </Button>
-                           </div>
+                      <div className="flex items-center justify-between mb-8 relative z-10">
+                        <div className="flex items-center space-x-2">
+                          <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all", formStep === 1 ? "bg-[#002F65] text-white" : "bg-[#66DCA5] text-white")}>1</div>
+                          <div className={cn("w-12 h-1 rounded-full transition-all", formStep === 2 ? "bg-[#66DCA5]" : "bg-gray-100")}></div>
+                          <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all", formStep === 2 ? "bg-[#002F65] text-white" : "bg-gray-100 text-gray-400")}>2</div>
                         </div>
-                      )}
-                    </form>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                          {formStep === 1 ? "Step 1: Interest" : "Step 2: Transfer Details"}
+                        </p>
+                      </div>
+
+                      <form
+                        onFocus={(e) => {
+                          const target = e.target as any;
+                          const label = target.name || target.placeholder || "form element";
+                          trackEvent("Form Field Focus", { field: label, form: "AI Assistant" });
+                        }}
+                        onSubmit={form.handleSubmit((data) => submitLeadMutation.mutate(data))}
+                        className="relative z-10 space-y-4"
+                      >
+                        {formStep === 1 ? (
+                          <div className="space-y-4 animate-in slide-in-from-right duration-500">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Campus *</Label>
+                                <select {...form.register("campus")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
+                                  <option value="">Select Campus</option>
+                                  <option value="Atlanta">Atlanta, GA</option>
+                                  <option value="Online">Online</option>
+                                </select>
+                                {form.formState.errors.campus && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.campus.message}</p>}
+                              </div>
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Program Area *</Label>
+                                <select {...form.register("programArea")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
+                                  <option value="">Select Area</option>
+                                  <option value="Business">Business</option>
+                                  <option value="Technology">Technology</option>
+                                  <option value="All">All Areas</option>
+                                </select>
+                                {form.formState.errors.programArea && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.programArea.message}</p>}
+                              </div>
+                            </div>
+
+                            <div className="space-y-2">
+                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Program of Interest *</Label>
+                              <select {...form.register("programOfInterest")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 focus:ring-[#002F65] appearance-none">
+                                <option value="">Select Program</option>
+                                <option value="BS-BM">BS in Business Management</option>
+                                <option value="MBA">MBA</option>
+                                <option value="MBA-BA">MBA in Business Analytics (STEM)</option>
+                                <option value="BS-CS">BS in Cybersecurity</option>
+                                <option value="BS-IT">BS in Information Technology</option>
+                              </select>
+                              {form.formState.errors.programOfInterest && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.programOfInterest.message}</p>}
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">First Name *</Label>
+                                <Input {...form.register("firstName")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="First Name" />
+                                {form.formState.errors.firstName && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.firstName.message}</p>}
+                              </div>
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Last Name *</Label>
+                                <Input {...form.register("lastName")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Last Name" />
+                                {form.formState.errors.lastName && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.lastName.message}</p>}
+                              </div>
+                            </div>
+
+                            <div className="space-y-2">
+                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Email *</Label>
+                              <Input {...form.register("email")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="email@address.com" />
+                              {form.formState.errors.email && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.email.message}</p>}
+                            </div>
+
+                            <div className="space-y-2">
+                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Phone *</Label>
+                              <Controller
+                                name="phone"
+                                control={form.control}
+                                render={({ field }) => (
+                                  <PhoneInput
+                                    {...field}
+                                    defaultCountry="US"
+                                    className="flex h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-[#002F65]"
+                                  />
+                                )}
+                              />
+                              {form.formState.errors.phone && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.phone.message}</p>}
+                            </div>
+
+                            <Button
+                              type="button"
+                              onClick={nextStep}
+                              className="w-full bg-[#002F65] text-white hover:bg-[#001732] h-12 rounded-2xl text-lg font-black shadow-lg flex items-center justify-center space-x-2 transition-transform active:scale-95 mt-2"
+                            >
+                              <span>Share Your Dreams</span>
+                              <ChevronRight className="w-5 h-5" />
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="space-y-4 animate-in slide-in-from-right duration-500">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Visa Status *</Label>
+                                <select {...form.register("visaStatus")} className="h-10 w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-4 text-sm text-gray-800 appearance-none">
+                                  <option value="F-1">F-1 Student</option>
+                                  <option value="J-1">J-1 Exchange</option>
+                                  <option value="H-1B">H-1B Worker</option>
+                                </select>
+                              </div>
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Zip Code *</Label>
+                                <Input {...form.register("zipCode")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="30328" />
+                                {form.formState.errors.zipCode && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.zipCode.message}</p>}
+                              </div>
+                            </div>
+
+                            <div className="space-y-2">
+                              <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Current University *</Label>
+                              <Input {...form.register("currentUniversity")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Where do you study now?" />
+                              {form.formState.errors.currentUniversity && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.currentUniversity.message}</p>}
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Current Program *</Label>
+                                <Input {...form.register("currentProgram")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="e.g. BSCS" />
+                              </div>
+                              <div className="space-y-2">
+                                <Label className="text-[#002F65] font-bold text-xs uppercase tracking-wider ml-1">Credits Earned *</Label>
+                                <Input type="number" {...form.register("creditsEarned")} className="h-10 rounded-2xl bg-gray-50/50 border-gray-200 text-[#002F65]" placeholder="Estimated" />
+                                {form.formState.errors.creditsEarned && <p className="text-red-500 text-[10px] mt-1">{form.formState.errors.creditsEarned.message}</p>}
+                              </div>
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                              <Button
+                                type="button"
+                                onClick={() => setFormStep(1)}
+                                className="h-12 px-6 rounded-2xl border-2 border-gray-300 bg-white text-gray-700 font-bold hover:bg-gray-50 hover:border-gray-400 order-2 sm:order-1"
+                              >
+                                ← Back
+                              </Button>
+                              <Button
+                                type="submit"
+                                className="flex-1 bg-[#002F65] text-white hover:bg-[#001732] h-12 rounded-2xl text-lg font-black shadow-lg whitespace-normal leading-tight px-4 order-1 sm:order-2"
+                                disabled={submitLeadMutation.isPending}
+                              >
+                                {submitLeadMutation.isPending ? "Configuring AI..." : "Step Up to Herzing →"}
+                              </Button>
+                            </div>
+                          </div>
+                        )}
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          ) : (
+              )
+            ) : (
               <div className="max-w-3xl mx-auto space-y-6">
                 {messages.map((msg, idx) => (
                   <div key={idx} className={cn("flex flex-col", msg.role === "user" ? "items-end" : "items-start")}>
                     <div className={cn(
                       "max-w-[85%] rounded-[1.5rem] px-6 py-4 shadow-sm relative group",
-                      msg.role === "user" 
-                        ? "bg-[#002F65] text-white rounded-tr-none" 
+                      msg.role === "user"
+                        ? "bg-[#002F65] text-white rounded-tr-none"
                         : "bg-gray-100 text-[#111111] rounded-tl-none border border-gray-200"
                     )}>
                       <div className="flex items-center mb-1 space-x-2">
@@ -580,8 +596,8 @@ export default function AITransferAssistant({
                     className="h-12 pl-6 pr-14 rounded-[1.2rem] border-2 border-gray-200 focus:border-[#002F65] focus:ring-0 text-sm shadow-inner bg-white w-full"
                     disabled={chatMutation.isPending}
                   />
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 bg-[#002F65] text-white rounded-lg hover:bg-[#001732] transition-all flex items-center justify-center shadow-lg group disabled:opacity-50"
                     disabled={chatMutation.isPending || !input.trim()}
                   >
