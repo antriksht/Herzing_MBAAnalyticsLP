@@ -20,7 +20,15 @@ interface Message {
   content: string;
 }
 
-export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export default function AITransferAssistant({ 
+  isOpen, 
+  onClose,
+  layout = "fullscreen"
+}: { 
+  isOpen: boolean; 
+  onClose: () => void;
+  layout?: "fullscreen" | "widget" | "fullpage";
+}) {
   const [hasFilledForm, setHasFilledForm] = useState(() => {
     return typeof window !== 'undefined' && localStorage.getItem("herzing_lead_submitted") === "true";
   });
@@ -201,20 +209,36 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
 
   return (
     <div className={cn(
-      "fixed inset-0 z-[100] bg-[#002F65]/90 backdrop-blur-md transition-all duration-500 flex items-center justify-center p-2 sm:p-4 md:p-8",
-      isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      layout === "fullscreen" && "fixed inset-0 z-[100] bg-[#002F65]/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-8",
+      layout === "widget" && "fixed bottom-[100px] right-4 md:right-8 z-[100] w-full max-w-md sm:max-w-xl flex flex-col items-end",
+      layout === "fullpage" && "w-full max-w-7xl relative mx-auto",
+      isOpen ? "opacity-100" : "opacity-0 pointer-events-none transition-opacity duration-300"
     )}>
-      {/* Main Container - Widened Column */}
-      <div className="bg-white w-full max-w-6xl max-h-[92vh] rounded-[2rem] shadow-2xl flex flex-col overflow-hidden border border-white/20 relative">
+      {/* Main Container */}
+      <div className={cn(
+        "bg-white shadow-2xl flex flex-col overflow-hidden relative transition-all duration-500",
+        layout === "fullscreen" && "w-full max-w-6xl max-h-[92vh] rounded-[2rem] border border-white/20",
+        layout === "fullpage" && "w-full min-h-[880px] lg:h-[880px] rounded-[2.5rem] shadow-none border-none",
+        layout === "widget" && cn(
+          "w-full rounded-[1.5rem] md:rounded-[2rem] border-2 border-[#002F65]/10",
+          !hasFilledForm ? "h-[520px]" : "h-[75vh] max-h-[750px]"
+        )
+      )}>
         
         {/* Premium Header */}
-        <div className="flex items-center justify-between px-8 py-6 border-b bg-gray-50/50 backdrop-blur-sm shrink-0">
+        <div className={cn(
+          "flex items-center justify-between border-b bg-gray-50/50 backdrop-blur-sm shrink-0",
+          layout === "fullscreen" ? "px-8 py-6" : "px-6 py-4"
+        )}>
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#002F65] to-[#00479b] rounded-2xl flex items-center justify-center shadow-lg transform -rotate-3">
-              <GraduationCap className="text-white w-7 h-7" />
+            <div className={cn(
+              "bg-gradient-to-br from-[#002F65] to-[#00479b] rounded-2xl flex items-center justify-center shadow-lg transform -rotate-3",
+              layout === "fullscreen" ? "w-12 h-12" : "w-10 h-10"
+            )}>
+              <GraduationCap className="text-white w-6 h-6 md:w-7 md:h-7" />
             </div>
             <div>
-              <h3 className="text-xl font-black text-[#002F65] tracking-tight">F-1 Transfer Guide</h3>
+              <h3 className={cn("font-black text-[#002F65] tracking-tight", layout === "fullscreen" ? "text-xl" : "text-lg")}>F-1 Transfer Guide</h3>
               <div className="flex items-center mt-0.5">
                 <span className="w-2 h-2 bg-[#66DCA5] rounded-full mr-2 animate-pulse shadow-[0_0_8px_rgba(102,220,165,0.6)]"></span>
                 <p className="text-[10px] text-[#66DCA5] font-bold uppercase tracking-widest">
@@ -223,40 +247,94 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
               </div>
             </div>
           </div>
-          <button 
-            onClick={onClose} 
-            className="p-3 hover:bg-red-50 text-gray-400 hover:text-red-500 rounded-2xl transition-all hover:rotate-90 duration-300"
-          >
-            <X className="w-6 h-6" />
-          </button>
+          {layout !== "fullpage" && (
+            <button 
+              onClick={onClose} 
+              className="p-2 hover:bg-red-50 text-gray-400 hover:text-red-500 rounded-2xl transition-all hover:rotate-90 duration-300"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          )}
         </div>
 
         {/* Dynamic Content Area */}
         <div className="flex-1 overflow-hidden relative flex flex-col">
-          <div className="flex-1 overflow-y-auto p-4 md:p-8" ref={scrollRef}>
+          <div className={cn(
+            "flex-1 overflow-y-auto",
+            (layout === "fullscreen" || layout === "fullpage") ? "p-4 md:p-8" : "p-6 flex flex-col items-center justify-center text-center"
+          )} ref={scrollRef}>
             {!hasFilledForm ? (
+              layout === "widget" ? (
+                <div className="space-y-6 animate-in fade-in zoom-in duration-500 max-w-sm px-4">
+                  <div className="w-16 h-16 bg-[#66DCA5]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <User className="text-[#002F65] w-8 h-8" />
+                  </div>
+                  <h2 className="text-2xl font-black text-[#002F65] leading-tight">
+                    Ready to Chat with an <span className="text-[#65DBA5]">F-1 Expert?</span>
+                  </h2>
+                  <p className="text-[#6F767D] font-medium leading-relaxed">
+                    To provide you with personalized transfer advice, please complete the brief interest form on the page first.
+                  </p>
+                  <Button 
+                    onClick={() => {
+                      onClose();
+                      const element = document.getElementById("form");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                      trackEvent("Widget Form Redirection", { label: "Scroll to Page Form" });
+                    }}
+                    className="bg-[#002F65] text-white hover:bg-[#001732] h-12 px-8 rounded-2xl text-lg font-black shadow-lg transform transition-all active:scale-95 group"
+                  >
+                    <span>Go to Form</span>
+                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest pt-2">
+                    Takes less than 60 seconds
+                  </p>
+                </div>
+              ) : (
               <div className="max-w-7xl mx-auto h-full flex flex-col justify-center">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div className={cn(
+                  "grid items-start",
+                  (layout === "fullscreen" || layout === "fullpage") ? "grid-cols-1 lg:grid-cols-2 gap-16" : "grid-cols-1 gap-6"
+                )}>
                   {/* Left Side: Global Narrative */}
-                  <div className="space-y-8 py-4">
-                    <div className="space-y-4">
+                  <div className="space-y-6 md:space-y-10 py-4">
+                    <div className="space-y-6">
                       <div className="inline-flex items-center px-4 py-2 bg-[#66DCA5]/10 text-[#002F65] rounded-full text-xs font-black uppercase tracking-widest border border-[#66DCA5]/20">
                         <span className="w-2 h-2 bg-[#66DCA5] rounded-full mr-2 animate-pulse"></span>
-                        Smooth Transition
+                        Instant Admission Planning
                       </div>
                       <h2 className="text-3xl md:text-5xl font-black text-[#002F65] leading-[1.1]">
-                        Explore your <br />
-                        <span className="text-[#66DCA5] italic">Next Destination.</span>
+                        Plan Your <br />
+                        <span className="text-[#66DCA5] italic">F-1 Transfer Instantly.</span>
                       </h2>
-                      <p className="text-[#6F767D] text-base md:text-lg font-medium leading-relaxed max-w-md">
-                        Herzing University welcomes F-1 transfer students with a clear, supportive process designed to keep you on track.
-                      </p>
+                      <div className="space-y-4 max-w-md">
+                        <p className="text-[#6F767D] text-base md:text-lg font-medium leading-relaxed">
+                          This AI system is designed to accelerate your move to Herzing. We analyze your credits, track your timeline, and build your May 4th start plan in one sitting.
+                        </p>
+                        <ul className="space-y-3">
+                          {[
+                            "Analyze prior credits & degree options",
+                            "Draft your I-20 transfer timeline",
+                            "Plan your May 4th enrollment steps"
+                          ].map((item, idx) => (
+                            <li key={idx} className="flex items-center text-[#002F65] font-bold text-sm">
+                              <div className="w-5 h-5 bg-[#66DCA5] rounded-full flex items-center justify-center mr-3 shadow-sm scale-75">
+                                <ChevronRight className="w-3 h-3 text-white" />
+                              </div>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                     
                     <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm relative group overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#002F65]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                      <p className="text-[#002F65] text-xl font-bold leading-relaxed relative z-10">
-                        Your journey deserves the right destination. Tell me about your goals, and I'll tailor my transfer advice precisely to you.
+                      <p className="text-[#002F65] text-lg font-bold leading-relaxed relative z-10">
+                        Tell me about your current program, and I’ll generate a custom Herzing Transfer Path specifically for you.
                       </p>
                     </div>
 
@@ -435,7 +513,8 @@ export default function AITransferAssistant({ isOpen, onClose }: { isOpen: boole
                   </div>
                 </div>
               </div>
-            ) : (
+            )
+          ) : (
               <div className="max-w-3xl mx-auto space-y-6">
                 {messages.map((msg, idx) => (
                   <div key={idx} className={cn("flex flex-col", msg.role === "user" ? "items-end" : "items-start")}>
